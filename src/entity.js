@@ -30,5 +30,9 @@ define([
         }
     };
 
+    Entity.prototype.processCollision = function (entity, target) {
+
+    };
+
     return Entity;
 });

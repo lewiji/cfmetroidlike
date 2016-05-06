@@ -26,7 +26,7 @@ define([
     Pool.prototype.constructor = Pool;
 
     Pool.prototype.create = function (x, y, data) {
-        var obj = this.getFirstDead();
+        var obj = this.getFirstExists(false);
         if (!obj) {
             obj = new this.spriteType(this.game);
             this.add(obj, true);

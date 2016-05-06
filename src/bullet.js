@@ -7,6 +7,12 @@ define([
     	Entity.call(this, game);
     	this.game = game;
 
+    	this.game.physics.enable(this);
+    	this.body.allowGravity = false;
+
+    	this.anchor.setTo(0.5, 0.5);
+
+    	this.kill();
     	this.checkWorldBounds = true;
     	this.outOfBoundsKill = true;
 
@@ -20,15 +26,24 @@ define([
     Bullet.prototype.constructor = Bullet;
 
     Bullet.prototype.spawn = function (x, y, data) {
+    	this.reset(this.x, this.y);
     	Entity.prototype.spawn.call(this, x, y, data);
-    	this.revive();
     	if (data && data.dx) {
-    		this.dx = data.dx;
+    		this.body.velocity.x = data.dx;
     	}
     };
 
     Bullet.prototype.update = function () {
-    	this.x += this.dx * 60 * this.game.time.physicsElapsed;
+    	
+    };
+
+    Bullet.prototype.processCollision = function (entity, target) {
+    	if (target.layer) {
+    		entity.x = -9000;
+    		entity.y = -9000;
+    		entity.kill();
+    		this.body.velocity.x = 0;
+    	}
     };
 
     return Bullet;

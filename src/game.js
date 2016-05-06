@@ -45,10 +45,17 @@ define([
 
         	player.update();
         	bulletPool.update();
+        	
+        	bulletPool.forEachAlive(this.collideBulletsWithTerrain, this);
+
         },
 
         fireBullet: function () {
-        	bulletPool.create(player.x, player.y - player.height / 2, {dx: 6 * player.scale.x});
+        	bulletPool.create(player.x, player.y - player.height / 2, {dx: 600 * player.scale.x});
+        },
+
+        collideBulletsWithTerrain: function (bullet) {
+        	this.game.physics.arcade.collide(bullet, collisionLayer, bullet.processCollision, null, bullet);
         }
     };
 
