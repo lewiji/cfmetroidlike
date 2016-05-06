@@ -1,0 +1,2 @@
+bower_components/phaser/*
+!bower_components/phaser/build/
