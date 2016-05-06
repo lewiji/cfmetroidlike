@@ -90,7 +90,9 @@ define([
         if (cursors.down.isDown) {
             if (this.state.onGround) {
                 this.state.isDucking = true;
-            }            
+            } else {
+                this.state.isDucking = false;
+            }           
         } else {
             this.state.isDucking = false;
         }
