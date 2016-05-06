@@ -1,18 +1,19 @@
 define([
-    'phaser'
-], function (Phaser) { 
+    'phaser', 'entity'
+], function (Phaser, Entity) { 
     'use strict';
 
     var cursors;
     var jumpTimer = 0;
 
-    function Player(game) {
-        console.log('Loading Player module');
+    function Player (game) {
+        // Extend Entity
+        Entity.call(this, game);
+
         this.game = game;
-        // Extend Sprite
-        Phaser.Sprite.call(this, this.game, 100, 100, 'player');
-        // add to stage
-        game.add.existing(this);
+
+        this.spawn(100, 100, {texture: 'player'});
+
         // set anchor to middle, bottom
         this.anchor.setTo(0.5, 1);
 
@@ -31,10 +32,12 @@ define([
         this.body.setSize(this.width * 0.5, this.height);
 
         cursors = this.game.input.keyboard.createCursorKeys();
-    };
 
-    // Extend Sprite
-    Player.prototype = Object.create(Phaser.Sprite.prototype);
+        return this;
+    }
+
+    // Extend Entity
+    Player.prototype = Object.create(Entity.prototype);
     Player.prototype.constructor = Player;
     
     Player.prototype.update = function () {
@@ -99,12 +102,20 @@ define([
 
         if (cursors.left.isDown && !this.state.isDucking) {
             this.body.velocity.x = -this.runForce;
+
             this.state.movingLeft = true;
             this.state.movingRight = false;
+
+            this.state.facingLeft = true;
+            this.state.facingRight = false;
         } else if (cursors.right.isDown && !this.state.isDucking) {
             this.body.velocity.x = this.runForce;
+
             this.state.movingRight = true;
             this.state.movingLeft = false;
+            
+            this.state.facingRight = true;
+            this.state.facingLeft = false;
         } else {
             this.state.movingRight = false;
             this.state.movingLeft = false;
@@ -144,7 +155,7 @@ define([
     Player.prototype.addAnimations = function () {
         this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 30);
         this.animations.add('duck', [11]);
-        this.animations.add('idle', [12]);
+        this.animations.add('idle', [7]);
         this.animations.add('hurt', [13]);
         this.animations.add('jump', [14]);
     };
@@ -156,8 +167,10 @@ define([
             longJumpExpired: false,
             isDucking: false,
             movingLeft: false,
-            movingRight: false
-        }
+            movingRight: false,
+            facingLeft: false,
+            facingRight: true
+        };
     };
 
     return Player;

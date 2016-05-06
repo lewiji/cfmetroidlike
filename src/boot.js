@@ -35,7 +35,7 @@ define([
             this.game.state.add('preloader', PreloaderState);
             this.game.state.start('preloader');
         }
-    }
+    };
 
     return Boot;
 });

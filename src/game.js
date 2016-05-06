@@ -1,17 +1,13 @@
 define([
-    'phaser', 'player'
-], function (Phaser, Player) { 
+    'phaser', 'player', 'pool', 'bullet'
+], function (Phaser, Player, Pool, Bullet) { 
     'use strict';
 
     function Game() {
     	console.log('Loading game module');
     }
 
-    var map;
-    var backgroundLayer;
-    var collisionLayer;
-    var player;
-    var cursors;
+    var map, backgroundLayer, collisionLayer, player, bulletPool, fireKey;
     
     Game.prototype = {
         constructor: Game,
@@ -33,7 +29,12 @@ define([
 
         	backgroundLayer.resizeWorld();
 
+        	fireKey = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
+
         	player = new Player(this.game);
+        	bulletPool = new Pool(this.game, Bullet, 30);
+
+        	fireKey.onDown.add(this.fireBullet, this);
         	
 
         	this.game.physics.arcade.gravity.y = 400;
@@ -43,6 +44,11 @@ define([
         	this.game.physics.arcade.collide(player, collisionLayer);
 
         	player.update();
+        	bulletPool.update();
+        },
+
+        fireBullet: function () {
+        	bulletPool.create(player.x, player.y - player.height / 2, {dx: 6 * player.scale.x});
         }
     };
 
