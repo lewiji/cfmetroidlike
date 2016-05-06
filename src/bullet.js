@@ -10,7 +10,7 @@ define([
     	this.game.physics.enable(this);
     	this.body.allowGravity = false;
 
-    	this.anchor.setTo(0.5, 0.5);
+    	this.anchor.setTo(1, 0.5);
 
     	this.kill();
     	this.checkWorldBounds = true;
@@ -26,10 +26,17 @@ define([
     Bullet.prototype.constructor = Bullet;
 
     Bullet.prototype.spawn = function (x, y, data) {
-    	this.reset(this.x, this.y);
     	Entity.prototype.spawn.call(this, x, y, data);
+    	// also reset the physics body
+    	this.reset(x, y);
     	if (data && data.dx) {
     		this.body.velocity.x = data.dx;
+    	}
+
+    	if (this.body.velocity.x > 0) {
+    		this.anchor.x = 1;
+    	} else {
+    		this.anchor.x = 0;
     	}
     };
 
