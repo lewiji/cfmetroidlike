@@ -140,7 +140,7 @@ define([
     };
 
     Player.prototype.addAnimations = function () {
-        this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+        this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 30);
         this.animations.add('duck', [11]);
         this.animations.add('idle', [12]);
         this.animations.add('hurt', [13]);
