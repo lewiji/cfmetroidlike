@@ -45,13 +45,15 @@ define([
     		} else {
     			this.rotation = 0;
     		}    		
-    	} else {
+    	} else if (this.body.velocity.x < 0) {
     		this.anchor.x = 0;
     		if (this.body.velocity.y < 0) {
     			this.rotation = -2.356;
     		} else {
     			this.rotation = 3.14;
     		}    		
+    	} else if (this.body.velocity.y < 0) {
+    		this.rotation = -1.57;
     	}
     };
 
