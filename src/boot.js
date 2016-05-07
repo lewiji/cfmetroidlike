@@ -11,7 +11,7 @@ define([
         constructor: Boot,
 
         start: function() {
-            this.game = new Phaser.Game(640, 480, Phaser.AUTO, 'gameContainer', { 
+            this.game = new Phaser.Game(640, 480, Phaser.AUTO, '', { 
                 preload: this.preload, 
                 create: this.create 
             });
@@ -25,11 +25,9 @@ define([
             // how the game should be scaled and positioned
             this.game.stage.scale.pageAlignHorizontally = true;
             this.game.stage.smoothed = false;
-            //this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.game.scale.pageAlignVertically = true;
-            // the element to be made fullscreen when fullscreen API is called
-            this.game.scale.fullScreenTarget = document.getElementById('gameContainer');
         },
         create: function () {
             this.game.state.add('preloader', PreloaderState);

@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="11">
  <tileset firstgid="1" name="LofiScifi" tilewidth="32" tileheight="32" tilecount="1760" columns="16">
   <image source="sci-fi-platformer-tiles-32x32-extension_0.png" width="512" height="3520"/>
+  <tile id="51">
+   <properties>
+    <property name="passthru" value="0"/>
+   </properties>
+  </tile>
+  <tile id="52">
+   <properties>
+    <property name="passthru" value="false"/>
+   </properties>
+  </tile>
+  <tile id="140">
+   <properties>
+    <property name="exitTo" value="test2"/>
+   </properties>
+  </tile>
+  <tile id="770">
+   <properties>
+    <property name="passthru" value="1"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="background" width="20" height="20">
   <data>
@@ -328,44 +348,44 @@
    <tile gid="1332"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="41"/>
-   <tile gid="42"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="41"/>
-   <tile gid="42"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="731"/>
+   <tile gid="732"/>
+   <tile gid="732"/>
+   <tile gid="733"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="41"/>
    <tile gid="42"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="731"/>
+   <tile gid="732"/>
+   <tile gid="732"/>
+   <tile gid="733"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="1336"/>
    <tile gid="1336"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="57"/>
-   <tile gid="58"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="57"/>
-   <tile gid="58"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="57"/>
    <tile gid="58"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="1332"/>
-   <tile gid="1332"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -384,7 +404,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="1336"/>
+   <tile gid="0"/>
    <tile gid="1336"/>
    <tile gid="1332"/>
    <tile gid="1336"/>
@@ -735,40 +755,20 @@
    <tile gid="52"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="771"/>
+   <tile gid="771"/>
+   <tile gid="771"/>
+   <tile gid="771"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="52"/>
-   <tile gid="52"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="771"/>
+   <tile gid="771"/>
+   <tile gid="771"/>
+   <tile gid="771"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="52"/>
@@ -791,7 +791,27 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="52"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="52"/>
    <tile gid="52"/>
    <tile gid="52"/>
@@ -814,4 +834,11 @@
    <tile gid="52"/>
   </data>
  </layer>
+ <objectgroup name="objects" offsetx="36" offsety="7">
+  <object id="9" name="exit" gid="141" x="608" y="591" width="32" height="32">
+   <properties>
+    <property name="exitTo" value="test2"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

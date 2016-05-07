@@ -3,14 +3,15 @@ define([
 ], function (Phaser, Entity) { 
     'use strict';
 
-    var cursors;
+    var cursors, fireKey, jumpKey;
     var jumpTimer = 0;
 
-    function Player (game) {
+    function Player (game, bulletPool) {
         // Extend Entity
         Entity.call(this, game);
 
         this.game = game;
+        this.bulletPool = bulletPool;
 
         this.spawn(100, 100, {texture: 'player'});
 
@@ -33,6 +34,11 @@ define([
 
         cursors = this.game.input.keyboard.createCursorKeys();
 
+        fireKey = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
+        fireKey.onDown.add(this.fireBullet, this);
+
+        jumpKey = this.game.input.keyboard.addKey(Phaser.Keyboard.Z);
+    
         return this;
     }
 
@@ -53,10 +59,37 @@ define([
         this.runForce = 200;
     };
 
+    var bulletDy, bulletDx;
+    Player.prototype.fireBullet = function () {
+        if (cursors.up.isDown) {
+            bulletDy = -600;
+        } else {
+            bulletDy = 0;
+        }
+
+        if (this.state.movingRight) {
+            bulletDx = 600;
+        } else if (this.state.movingLeft) {
+            bulletDx = -600;
+        } else {
+            if (bulletDy != 0) {
+                bulletDx = 0;
+            } else {
+                if (this.state.facingRight) {
+                    bulletDx = 600;
+                } else {
+                    bulletDx = -600;
+                }
+            }
+            
+        }
+        this.bulletPool.create(this.x, this.y - this.height / 2, {dx: bulletDx, dy: bulletDy});
+    }
+
     Player.prototype.handleInput = function () {
         // set states manually per control - if this gets more complicated may need a more
         // robust state machine implementation
-        if (cursors.up.isDown) {
+        if (jumpKey.isDown) {
             if (this.state.onGround && !this.state.isJumping) {
                 this.body.velocity.y = -this.jumpForce;
                 this.state.isJumping = true;

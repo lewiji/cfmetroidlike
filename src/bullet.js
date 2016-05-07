@@ -28,15 +28,30 @@ define([
     Bullet.prototype.spawn = function (x, y, data) {
     	Entity.prototype.spawn.call(this, x, y, data);
     	// also reset the physics body
-    	this.reset(x, y);
-    	if (data && data.dx) {
-    		this.body.velocity.x = data.dx;
+    	if (data) {
+    		if (data.dx) {
+    			this.body.velocity.x = data.dx;
+    		}
+    		if (data.dy) {
+    			this.body.velocity.y = data.dy;
+    		}
+    		
     	}
 
     	if (this.body.velocity.x > 0) {
     		this.anchor.x = 1;
+    		if (this.body.velocity.y < 0) {
+    			this.rotation = -0.78;
+    		} else {
+    			this.rotation = 0;
+    		}    		
     	} else {
     		this.anchor.x = 0;
+    		if (this.body.velocity.y < 0) {
+    			this.rotation = -2.356;
+    		} else {
+    			this.rotation = 3.14;
+    		}    		
     	}
     };
 

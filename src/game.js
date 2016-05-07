@@ -7,7 +7,7 @@ define([
     	console.log('Loading game module');
     }
 
-    var map, backgroundLayer, collisionLayer, player, bulletPool, fireKey;
+    var map, backgroundLayer, collisionLayer, exitLayer, player, bulletPool;
     
     Game.prototype = {
         constructor: Game,
@@ -19,39 +19,83 @@ define([
         create: function () {
         	this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        	map = this.add.tilemap('testLevel');
-        	map.addTilesetImage('LofiScifi', 'testTileset');
-
-        	backgroundLayer = map.createLayer('background');
-        	collisionLayer = map.createLayer('collision');
-        	collisionLayer.visible = false;
-        	map.setCollision(52, true, collisionLayer);
-
-        	backgroundLayer.resizeWorld();
-
-        	fireKey = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
-
-        	player = new Player(this.game);
-        	bulletPool = new Pool(this.game, Bullet, 30);
-
-        	fireKey.onDown.add(this.fireBullet, this);
-        	
+        	this.createMap();
+        	this.createEntities();   	
 
         	this.game.physics.arcade.gravity.y = 400;
         },
 
         update: function () {
         	this.game.physics.arcade.collide(player, collisionLayer);
+        	this.game.physics.arcade.collide(player, exitLayer, this.exitLevel);
+        	bulletPool.forEachAlive(this.collideBulletsWithTerrain, this);
 
         	player.update();
         	bulletPool.update();
         	
-        	bulletPool.forEachAlive(this.collideBulletsWithTerrain, this);
 
         },
 
-        fireBullet: function () {
-        	bulletPool.create(player.x, player.y - player.height / 2, {dx: 600 * player.scale.x});
+        render: function () {
+        	/*exitLayer.forEach(function (e) {
+        		this.game.debug.body(e);
+        	}, this);*/
+        	
+        },
+
+        createMap: function () {
+        	map = this.add.tilemap('testLevel');
+        	map.addTilesetImage('LofiScifi', 'testTileset');
+
+        	backgroundLayer = map.createLayer('background');
+        	collisionLayer = map.createLayer('collision');
+
+        	exitLayer = this.game.add.group();
+        	exitLayer.enableBody = true;
+        	map.createFromObjects('objects', 'exit', 'debug', 1, true, false, exitLayer);
+
+        	exitLayer.setAll('body.moves', false);
+
+        	collisionLayer.visible = false;
+        	map.setCollision(52, true, collisionLayer);
+        	map.setCollision(771, true, collisionLayer);
+
+        	this.processMapCollisionProperties();
+        	exitLayer.forEach(this.processExits, this);
+
+        	backgroundLayer.resizeWorld();
+        },
+
+        createEntities: function () {
+        	bulletPool = new Pool(this.game, Bullet, 30);
+        	player = new Player(this.game, bulletPool);
+        },
+
+        processMapCollisionProperties: function () {
+        	var d = collisionLayer.map.layers[collisionLayer.index].data;
+        	var t;
+        	for (var i = 0; i < d.length; i++) {
+        		for (var j = 0; j < d[i].length; j++) {
+        			t = d[i][j];
+        			if (t.properties.passthru == 1) {
+        				t.setCollision(false, false, true, false);
+        			}
+        		}
+        	}
+        },
+
+        processExits: function (exit, x, y) {
+			if (exit.position.x > this.game.width / 2) {
+        		exit.body.offset.x = map.tileWidth / 2;
+        	} else {
+        		exit.body.offset.x = -map.tileWidth / 2;
+        	}
+        },
+
+        exitLevel: function (collider, tile) {
+        	if (tile.exitTo !== undefined) {
+
+        	}
         },
 
         collideBulletsWithTerrain: function (bullet) {

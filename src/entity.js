@@ -16,6 +16,7 @@ define([
     Entity.prototype.spawn = function (x, y, data) {
         this.x = x;
         this.y = y;
+        this.reset(x, y);
         this.data = data;
 
         this.processData(data);

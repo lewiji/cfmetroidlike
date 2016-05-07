@@ -13,7 +13,7 @@
                 <key>scale</key>
                 <double>0.5</double>
                 <key>extension</key>
-                <string>medium</string>
+                <string></string>
                 <key>spriteFilter</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
@@ -74,7 +74,7 @@
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
-        <uint>7</uint>
+        <uint>3</uint>
         <key>webpQualityLevel</key>
         <uint>101</uint>
         <key>textureSubPath</key>
@@ -141,11 +141,11 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename></filename>
+                <filename>lasers.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
-        <true/>
+        <false/>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
