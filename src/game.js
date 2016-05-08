@@ -1,13 +1,13 @@
 define([
-    'phaser', 'player', 'pool', 'bullet'
-], function (Phaser, Player, Pool, Bullet) { 
+    'phaser', 'player', 'pool', 'bullet', 'ripper'
+], function (Phaser, Player, Pool, Bullet, Ripper) { 
     'use strict';
 
     function Game() {
     	console.log('Loading game module');
     }
 
-    var map, backgroundLayer, collisionLayer, exitLayer, player, bulletPool;
+    var map, backgroundLayer, collisionLayer, exitLayer, player, bulletPool, enemiesLayer;
     
     Game.prototype = {
         constructor: Game,
@@ -29,6 +29,7 @@ define([
         	this.game.physics.arcade.collide(player, collisionLayer);
         	this.game.physics.arcade.collide(player, exitLayer, this.exitLevel);
         	bulletPool.forEachAlive(this.collideBulletsWithTerrain, this);
+        	enemiesLayer.forEachAlive(this.updateEnemies, this);
 
         	player.update();
         	bulletPool.update();
@@ -67,8 +68,24 @@ define([
         },
 
         createEntities: function () {
+        	// created in draw order
         	bulletPool = new Pool(this.game, Bullet, 30);
+
+        	enemiesLayer = this.game.add.group();
+        	
+        	this.createEnemies();
+
         	player = new Player(this.game, bulletPool);
+        },
+
+        createEnemies: function () {
+        	map.createFromObjects('objects', 'ripper', 'enemies', 'bee.png', true, false, enemiesLayer, Ripper, false);
+        },
+
+        updateEnemies: function (enemy) {
+        	this.game.physics.arcade.overlap(bulletPool, enemiesLayer, this.collideBulletsWithEnemies, null, this);
+        	this.game.physics.arcade.collide(enemy, collisionLayer, enemy.collideTerrain, null, enemy);
+        	enemy.update();
         },
 
         processMapCollisionProperties: function () {
@@ -100,6 +117,11 @@ define([
 
         collideBulletsWithTerrain: function (bullet) {
         	this.game.physics.arcade.collide(bullet, collisionLayer, bullet.processCollision, null, bullet);
+        },
+
+        collideBulletsWithEnemies: function (bullet, enemy) {
+        	bullet.processCollision(bullet, enemy);
+        	enemy.hit(bullet);
         }
     };
 

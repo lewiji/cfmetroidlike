@@ -5,7 +5,6 @@ define([
 
     function Bullet (game) {
     	Entity.call(this, game);
-    	this.game = game;
 
     	this.game.physics.enable(this);
     	this.body.allowGravity = false;
@@ -62,12 +61,10 @@ define([
     };
 
     Bullet.prototype.processCollision = function (entity, target) {
-    	if (target.layer) {
-    		entity.x = -9000;
-    		entity.y = -9000;
-    		entity.kill();
-    		this.body.velocity.x = 0;
-    	}
+		entity.x = -9000;
+		entity.y = -9000;
+		entity.kill();
+		this.body.velocity.x = 0;
     };
 
     return Bullet;

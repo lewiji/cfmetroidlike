@@ -26,6 +26,7 @@ define([
             this.load.atlasJSONArray('player', 'assets/spritesheets/player-0.png', 'assets/spritesheets/player.json');
             this.load.atlasJSONArray('lasers', 'assets/spritesheets/lasers.png', 'assets/spritesheets/lasers.json');
             this.load.atlasJSONArray('debug', 'assets/spritesheets/debug.png', 'assets/spritesheets/debug.json');
+            this.load.atlasJSONArray('enemies', 'assets/spritesheets/enemies.png', 'assets/spritesheets/enemies.json');
         },
 
         create: function () {

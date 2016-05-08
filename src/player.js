@@ -10,7 +10,6 @@ define([
         // Extend Entity
         Entity.call(this, game);
 
-        this.game = game;
         this.bulletPool = bulletPool;
 
         this.spawn(100, 100, {texture: 'player'});

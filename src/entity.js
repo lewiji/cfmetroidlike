@@ -29,9 +29,21 @@ define([
                 this.frameName = data.frameName;
             }
         }
+
+        if (data.health) {
+            this.health = data.health;
+        }
     };
 
     Entity.prototype.processCollision = function (entity, target) {
+
+    };
+
+    Entity.prototype.collideTerrain = function () {
+
+    };
+
+    Entity.prototype.update = function () {
 
     };
 

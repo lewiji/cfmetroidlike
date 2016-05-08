@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.2.0</string>
         <key>fileName</key>
-        <string>C:/cygwin64/home/Lewis/dev/metroidlike/assets/spritesheets/debug.tps</string>
+        <string>C:/cygwin64/home/Lewis/dev/metroidlike/assets/spritesheets/enemies.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -100,7 +100,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -141,7 +141,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>debug.json</filename>
+                <filename>enemies.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -170,13 +170,13 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>1</uint>
+            <uint>0</uint>
             <key>trimThreshold</key>
-            <uint>1</uint>
+            <uint>2</uint>
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -188,8 +188,18 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">D:/AssetLibrary/kenney1/Art/UI pack (300 assets)/Adventure pack (80 assets)/PNG/arrowBlue_left.png</key>
-            <key type="filename">D:/AssetLibrary/kenney1/Art/UI pack (300 assets)/Adventure pack (80 assets)/PNG/arrowBlue_right.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/barnacle.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/barnacle_attack.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/barnacle_dead.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/bee.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/bee_dead.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/bee_move.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/frog.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/frog_dead.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/frog_move.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/ladybug.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/ladybug_fly.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/ladybug_move.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -197,8 +207,18 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>D:/AssetLibrary/kenney1/Art/UI pack (300 assets)/Adventure pack (80 assets)/PNG/arrowBlue_left.png</filename>
-            <filename>D:/AssetLibrary/kenney1/Art/UI pack (300 assets)/Adventure pack (80 assets)/PNG/arrowBlue_right.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/bee.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/bee_dead.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/bee_move.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/barnacle.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/barnacle_attack.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/barnacle_dead.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/frog_move.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/frog.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/frog_dead.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/ladybug_move.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/ladybug.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/ladybug_fly.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
