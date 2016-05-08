@@ -9,7 +9,7 @@ define([
     	this.game.physics.enable(this);
     	this.body.allowGravity = false;
 
-    	this.anchor.setTo(1, 0.5);
+    	this.anchor.setTo(0.5, 0.5);
 
     	this.kill();
     	this.checkWorldBounds = true;
@@ -19,6 +19,8 @@ define([
     		texture: 'lasers',
     		frameName: 'laserBlue06.png'
     	});
+
+    	this.body.setCircle(this.height);
     }
 
     Bullet.prototype = Object.create(Entity.prototype);
@@ -38,14 +40,14 @@ define([
     	}
 
     	if (this.body.velocity.x > 0) {
-    		this.anchor.x = 1;
+    		//this.anchor.x = 1;
     		if (this.body.velocity.y < 0) {
     			this.rotation = -0.78;
     		} else {
     			this.rotation = 0;
     		}    		
     	} else if (this.body.velocity.x < 0) {
-    		this.anchor.x = 0;
+    		//this.anchor.x = 0;
     		if (this.body.velocity.y < 0) {
     			this.rotation = -2.356;
     		} else {

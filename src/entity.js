@@ -15,7 +15,7 @@ define([
 
     Entity.prototype.spawn = function (x, y, data) {
         this.x = x;
-        this.y = y;
+        this.y = y;        
         this.reset(x, y);
         this.data = data;
 
@@ -35,7 +35,7 @@ define([
         }
     };
 
-    Entity.prototype.processCollision = function (entity, target) {
+    Entity.prototype.hit = function (entity, target) {
 
     };
 

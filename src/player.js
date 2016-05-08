@@ -30,6 +30,7 @@ define([
         // make physics body width smaller so sprite doesn't hang off platforms
         // this means the sprite kinda phases thru wall bounds - may be a better way to handle this
         this.body.setSize(this.width * 0.5, this.height);
+        this.originalBodyHeight = this.body.height;
 
         cursors = this.game.input.keyboard.createCursorKeys();
 
@@ -89,6 +90,16 @@ define([
     Player.prototype.handleInput = function () {
         // set states manually per control - if this gets more complicated may need a more
         // robust state machine implementation
+        this.handleJumping();
+
+        this.handleDucking();
+
+        this.handleMoving();
+
+        this.handleGroundState();
+    };
+
+    Player.prototype.handleJumping = function () {
         if (jumpKey.isDown) {
             if (this.state.onGround && !this.state.isJumping) {
                 this.body.velocity.y = -this.jumpForce;
@@ -122,17 +133,31 @@ define([
                 this.state.longJumpExpired = true;
             }
         }
+    };
 
+    Player.prototype.handleDucking = function () {
         if (cursors.down.isDown) {
             if (this.state.onGround) {
-                this.state.isDucking = true;
+                if (this.state.isDucking == false) {
+                    this.state.isDucking = true;
+                    this.body.height = this.height * 0.55;
+                }                
             } else {
-                this.state.isDucking = false;
+                if (this.state.isDucking) {
+                    this.state.isDucking = false;
+                    this.body.height = this.originalBodyHeight;
+                }
             }           
         } else {
-            this.state.isDucking = false;
+            if (this.state.isDucking) {
+                this.state.isDucking = false;
+                this.body.height = this.originalBodyHeight;
+            }
+            
         }
+    };
 
+    Player.prototype.handleMoving = function () {
         if (cursors.left.isDown && !this.state.isDucking) {
             this.body.velocity.x = -this.runForce;
 
@@ -153,7 +178,9 @@ define([
             this.state.movingRight = false;
             this.state.movingLeft = false;
         }
+    };
 
+    Player.prototype.handleGroundState = function () {
         if (this.body.onFloor()) {
             this.state.onGround = true;
         } else {
@@ -212,7 +239,6 @@ define([
         if (this.state.invulnerable || enemy.dying) {
             return;
         }
-        console.log('hit');
         this.health -= enemy.damage;
         
         this.makeInvulnerable();

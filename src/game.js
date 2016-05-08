@@ -42,11 +42,15 @@ define([
         },
 
         render: function () {
-        	/*enemiesLayer.forEach(function (e) {
+        	enemiesLayer.forEach(function (e) {
         		this.game.debug.body(e);
         	}, this);
 
-        	this.game.debug.body(player);*/
+        	bulletPool.forEach(function (e) {
+        		this.game.debug.body(e);
+        	}, this);
+
+        	this.game.debug.body(player);
         	
         },
 
@@ -125,7 +129,6 @@ define([
         },
 
         collideBulletsWithEnemies: function (bullet, enemy) {
-        	console.log('collision')
         	bullet.processCollision(bullet, enemy);
         	enemy.hit(bullet);
         }
