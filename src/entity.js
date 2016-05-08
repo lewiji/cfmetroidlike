@@ -3,8 +3,8 @@ define([
 ], function (Phaser) { 
     'use strict';
 
-    function Entity (game) {
-        Phaser.Sprite.call(this, game, -9000, -9000);
+    function Entity (game, x, y, texture, key) {
+        Phaser.Sprite.call(this, game, -9000, -9000, texture, key);
         this.game = game;
         this.game.add.existing(this);
         return this;

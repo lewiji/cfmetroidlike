@@ -4,7 +4,7 @@ define([
     'use strict';
 
     function Enemy (game, x, y, texture, key) {
-    	Entity.call(this, game);
+    	Entity.call(this, game, x, y, texture, key);
 
         this.kill();
 
@@ -15,7 +15,7 @@ define([
         this.maxHealth = 1;
         this.damage = 8;
 
-    	this.anchor.setTo(0.5, 1);
+    	this.anchor.setTo(0.5, 0.5);
     }
 
     Enemy.prototype = Object.create(Entity.prototype);
@@ -29,6 +29,7 @@ define([
         } else {
             data.health = this.maxHealth;
         }
+        this.body.setSize(this.width, this.height);
         Entity.prototype.spawn.call(this, x, y, data);
 
     };
@@ -45,7 +46,9 @@ define([
             this.body.velocity.x = 0;
             this.body.velocity.y = 0;
             this.body.allowGravity = false;
-            // TODO play death animation, for now just die
+            this.frameName = 'bee_dead.png';
+            var deathTween = this.game.add.tween(this).to({alpha: 0}, 100, 'Linear', true, 0, 2, true);
+            deathTween.onComplete.add(this.death, this);
             this.death();
         }
     };

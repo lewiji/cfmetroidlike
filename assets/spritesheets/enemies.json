@@ -2,107 +2,107 @@
 
 {
 	"filename": "barnacle.png",
-	"frame": {"x":0,"y":0,"w":64,"h":64},
+	"frame": {"x":0,"y":0,"w":48,"h":53},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":53},
+	"sourceSize": {"w":48,"h":53}
 },
 {
 	"filename": "barnacle_attack.png",
-	"frame": {"x":64,"y":0,"w":64,"h":64},
+	"frame": {"x":48,"y":0,"w":48,"h":54},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":54},
+	"sourceSize": {"w":48,"h":54}
 },
 {
 	"filename": "barnacle_dead.png",
-	"frame": {"x":128,"y":0,"w":64,"h":64},
+	"frame": {"x":96,"y":0,"w":48,"h":53},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":53},
+	"sourceSize": {"w":48,"h":53}
 },
 {
 	"filename": "bee.png",
-	"frame": {"x":192,"y":0,"w":64,"h":64},
+	"frame": {"x":144,"y":0,"w":54,"h":46},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":46},
+	"sourceSize": {"w":54,"h":46}
 },
 {
 	"filename": "bee_dead.png",
-	"frame": {"x":256,"y":0,"w":64,"h":64},
+	"frame": {"x":198,"y":0,"w":54,"h":46},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":46},
+	"sourceSize": {"w":54,"h":46}
 },
 {
 	"filename": "bee_move.png",
-	"frame": {"x":320,"y":0,"w":64,"h":64},
+	"frame": {"x":252,"y":0,"w":58,"h":40},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":40},
+	"sourceSize": {"w":58,"h":40}
 },
 {
 	"filename": "frog.png",
-	"frame": {"x":384,"y":0,"w":64,"h":64},
+	"frame": {"x":310,"y":0,"w":54,"h":37},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":37},
+	"sourceSize": {"w":54,"h":37}
 },
 {
 	"filename": "frog_dead.png",
-	"frame": {"x":448,"y":0,"w":64,"h":64},
+	"frame": {"x":364,"y":0,"w":58,"h":50},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":50},
+	"sourceSize": {"w":58,"h":50}
 },
 {
 	"filename": "frog_move.png",
-	"frame": {"x":512,"y":0,"w":64,"h":64},
+	"frame": {"x":422,"y":0,"w":58,"h":50},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":50},
+	"sourceSize": {"w":58,"h":50}
 },
 {
 	"filename": "ladybug.png",
-	"frame": {"x":576,"y":0,"w":64,"h":64},
+	"frame": {"x":480,"y":0,"w":56,"h":32},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":32},
+	"sourceSize": {"w":56,"h":32}
 },
 {
 	"filename": "ladybug_fly.png",
-	"frame": {"x":640,"y":0,"w":64,"h":64},
+	"frame": {"x":536,"y":0,"w":55,"h":39},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":55,"h":39},
+	"sourceSize": {"w":55,"h":39}
 },
 {
 	"filename": "ladybug_move.png",
-	"frame": {"x":704,"y":0,"w":64,"h":64},
+	"frame": {"x":591,"y":0,"w":57,"h":32},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
-	"sourceSize": {"w":64,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":32},
+	"sourceSize": {"w":57,"h":32}
 }],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "enemies.png",
 	"format": "RGBA8888",
-	"size": {"w":768,"h":64},
+	"size": {"w":648,"h":54},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:274e8dd0a6da1f4f15c13ecd4e2c8f88:d699a59f560b3bf7f9000c2d2e1593f0:9b2a76c8b2a408b3f0547a4eddda1e06$"
+	"smartupdate": "$TexturePacker:SmartUpdate:6541dde93a641eea327c35f9f038d525:d699a59f560b3bf7f9000c2d2e1593f0:9b2a76c8b2a408b3f0547a4eddda1e06$"
 }
 }

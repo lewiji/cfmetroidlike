@@ -3,7 +3,7 @@ define([
 ], function (Phaser, Entity) { 
     'use strict';
 
-    var cursors, fireKey, jumpKey;
+    var cursors, fireKey, jumpKey, invulnerableTween;
     var jumpTimer = 0;
 
     function Player (game, bulletPool) {
@@ -48,6 +48,7 @@ define([
     Player.prototype.update = function () {
         // default x velocity to 0 = instant stop
         this.body.velocity.x = 0;
+        
 
         this.handleInput();
         this.handleAnimation();
@@ -201,8 +202,50 @@ define([
             movingLeft: false,
             movingRight: false,
             facingLeft: false,
-            facingRight: true
+            facingRight: true,
+            invulnerable: false,
+            hurt: false
         };
+    };
+
+    Player.prototype.hit = function (player, enemy) {
+        if (this.state.invulnerable || enemy.dying) {
+            return;
+        }
+        console.log('hit');
+        this.health -= enemy.damage;
+        
+        this.makeInvulnerable();
+        
+        this.animations.play('hurt');
+        this.state.hurt = true;
+        invulnerableTween.onComplete.addOnce(this.resetHurt, this);
+
+        if (this.body.velocity.y < 0) {
+            this.body.velocity.y = this.jumpForce;
+            this.state.longJumpExpired = true;
+        } else {
+            this.body.velocity.y = -this.jumpForce;
+        }
+
+        
+    };
+
+    Player.prototype.makeInvulnerable = function (time) {
+        if (time === undefined) {
+            time = 400;
+        }
+        this.state.invulnerable = true;
+        invulnerableTween = this.game.add.tween(this).to({alpha: 0}, 100, 'Linear', true, 0, Math.round(time / 100), true);
+        invulnerableTween.onComplete.addOnce(this.resetInvulnerability, this);
+    };
+
+    Player.prototype.resetInvulnerability = function () {
+        this.state.invulnerable = false;
+    };
+
+    Player.prototype.resetHurt = function () {
+        this.state.hurt = false;
     };
 
     return Player;

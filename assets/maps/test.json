@@ -48,9 +48,8 @@
                  "y":591
                 }, 
                 {
-                 "gid":1764,
-                 "height":64,
-                 "id":11,
+                 "height":0,
+                 "id":14,
                  "name":"ripper",
                  "properties":
                     {
@@ -59,12 +58,27 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":64,
-                 "x":511,
-                 "y":490
+                 "width":0,
+                 "x":549,
+                 "y":457.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"ripper",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":359.166666666667,
+                 "y":174.666666666667
                 }],
-         "offsetx":36,
-         "offsety":7,
+         "offsetx":32,
+         "offsety":0,
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -72,7 +86,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":14,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "properties":
     {
@@ -116,23 +130,6 @@
                 }
             },
          "tilewidth":32
-        }, 
-        {
-         "columns":12,
-         "firstgid":1761,
-         "image":"..\/spritesheets\/enemies.png",
-         "imageheight":64,
-         "imagewidth":768,
-         "margin":0,
-         "name":"enemies",
-         "properties":
-            {
-
-            },
-         "spacing":0,
-         "tilecount":12,
-         "tileheight":64,
-         "tilewidth":64
         }],
  "tilewidth":32,
  "version":1,

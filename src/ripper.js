@@ -19,6 +19,8 @@ define([
         Enemy.prototype.spawn.call(this, x, y, data);
         this.body.velocity.x = this.xSpeed;
         this.body.bounce.x = 1;
+        this.animations.add('fly', ['bee.png', 'bee_move.png'], 5, true, false);
+        this.animations.play('fly');
     };
 
     Ripper.prototype.update = function () {
@@ -31,6 +33,13 @@ define([
         } else {
             this.scale.x = -1;
         }
+    };
+
+    Ripper.prototype.death = function () {
+        this.animations.stop('fly');
+        this.frameName = 'bee_dead.png';
+        var deathTween = this.game.add.tween(this).to({alpha: 0}, 100, 'Linear', true, 0, 2, true);
+        deathTween.onComplete.add(Enemy.prototype.death, this);
     };
 
     return Ripper;
