@@ -42,7 +42,7 @@ define([
         },
 
         render: function () {
-        	enemiesLayer.forEach(function (e) {
+        	/*enemiesLayer.forEach(function (e) {
         		this.game.debug.body(e);
         	}, this);
 
@@ -50,7 +50,7 @@ define([
         		this.game.debug.body(e);
         	}, this);
 
-        	this.game.debug.body(player);
+        	this.game.debug.body(player);*/
         	
         },
 
