@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="18">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="19">
  <tileset firstgid="1" name="LofiScifi" tilewidth="32" tileheight="32" tilecount="1760" columns="16">
   <image source="sci-fi-platformer-tiles-32x32-extension_0.png" width="512" height="3520"/>
   <tile id="51">
@@ -65,7 +65,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="1332"/>
-   <tile gid="1332"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -85,7 +85,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="1336"/>
-   <tile gid="1336"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -472,27 +472,27 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="52"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="52"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="52"/>
-   <tile gid="52"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -835,13 +835,20 @@
   </data>
  </layer>
  <objectgroup name="objects" offsetx="32" offsety="0">
-  <object id="14" name="ripper" x="549" y="89.333"/>
+  <object id="14" name="ripper" x="551" y="129.333"/>
   <object id="15" name="ripper" x="71.167" y="307.667"/>
   <object id="17" name="exit" x="-19" y="577">
    <properties>
     <property name="exitId" value="1"/>
     <property name="exitTo" value="test1"/>
     <property name="linkTo" value="1"/>
+   </properties>
+  </object>
+  <object id="18" name="exit" x="-20" y="92">
+   <properties>
+    <property name="exitId" value="2"/>
+    <property name="exitTo" value="test1"/>
+    <property name="linkTo" value="2"/>
    </properties>
   </object>
  </objectgroup>
