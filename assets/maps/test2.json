@@ -48,21 +48,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":15,
-                 "name":"ripper",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":71.167,
-                 "y":307.667
-                }, 
-                {
-                 "height":0,
                  "id":17,
                  "name":"exit",
                  "properties":
@@ -94,6 +79,21 @@
                  "width":0,
                  "x":-20,
                  "y":92
+                }, 
+                {
+                 "height":0,
+                 "id":19,
+                 "name":"crawler",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":184,
+                 "y":267
                 }],
          "offsetx":32,
          "offsety":0,
@@ -104,7 +104,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":19,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "properties":
     {

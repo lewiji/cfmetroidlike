@@ -9,7 +9,6 @@ define([
         this.kill();
 
     	this.game.physics.enable(this);
-    	this.body.allowGravity = false;
         this.body.immovable = true;
 
         this.maxHealth = 1;
@@ -46,9 +45,7 @@ define([
             this.body.velocity.x = 0;
             this.body.velocity.y = 0;
             this.body.allowGravity = false;
-            this.frameName = 'bee_dead.png';
-            var deathTween = this.game.add.tween(this).to({alpha: 0}, 100, 'Linear', true, 0, 2, true);
-            deathTween.onComplete.add(this.death, this);
+            this.body.enable = false;
             this.death();
         }
     };

@@ -1,6 +1,6 @@
 define([
-    'phaser', 'player', 'pool', 'bullet', 'ripper'
-], function (Phaser, Player, Pool, Bullet, Ripper) { 
+    'phaser', 'player', 'pool', 'bullet', 'ripper', 'crawler'
+], function (Phaser, Player, Pool, Bullet, Ripper, Crawler) { 
     'use strict';
 
     function Game() {
@@ -105,7 +105,8 @@ define([
         },
 
         createEnemies: function () {
-        	map.createFromObjects('objects', 'ripper', 'enemies', 'bee.png', true, false, enemiesLayer, Ripper, false);
+        	map.createFromObjects('objects', 'ripper', 'enemies', undefined, true, false, enemiesLayer, Ripper, false);
+        	map.createFromObjects('objects', 'crawler', 'enemies', undefined, true, false, enemiesLayer, Crawler, false);
         },
 
         updateEnemies: function (enemy) {

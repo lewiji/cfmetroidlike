@@ -94,6 +94,21 @@
                  "width":0,
                  "x":591,
                  "y":88
+                }, 
+                {
+                 "height":0,
+                 "id":24,
+                 "name":"crawler",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":203,
+                 "y":268
                 }],
          "offsetx":32,
          "offsety":0,
@@ -104,7 +119,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":24,
+ "nextobjectid":25,
  "orientation":"orthogonal",
  "properties":
     {
