@@ -53,6 +53,10 @@ define([
         	}, this);
 
         	this.game.debug.body(player);*/
+
+        	exitLayer.forEach(function (e) {
+        	        		this.game.debug.body(e);
+        	}, this);
         	
         },
 
@@ -78,6 +82,7 @@ define([
         	map.createFromObjects('objects', 'exit', 'debug', 1, true, false, exitLayer);
 
         	exitLayer.setAll('body.moves', false);
+
 
         	collisionLayer.visible = false;
         	map.setCollision(52, true, collisionLayer);
@@ -123,9 +128,13 @@ define([
 
         processExits: function (exit, linkTo) {
 			if (exit.position.x > this.game.width / 2) {
+				exit.x += map.tileWidth / 2;
         		exit.body.offset.x = map.tileWidth / 2;
+        		exit.frame = 1;
         	} else {
+        		exit.x += map.tileWidth;
         		exit.body.offset.x = -map.tileWidth / 2;
+        		exit.frame = 0;
         	}
         	if (exit.exitId === linkTo) {
         		player.position.setTo(exit.position.x, exit.position.y);

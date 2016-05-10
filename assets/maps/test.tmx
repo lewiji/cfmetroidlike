@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="16">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="19">
  <tileset firstgid="1" name="LofiScifi" tilewidth="32" tileheight="32" tilecount="1760" columns="16">
   <image source="sci-fi-platformer-tiles-32x32-extension_0.png" width="512" height="3520"/>
   <tile id="51">
@@ -835,14 +835,14 @@
   </data>
  </layer>
  <objectgroup name="objects" offsetx="32" offsety="0">
-  <object id="9" name="exit" gid="141" x="608" y="591" width="32" height="32">
+  <object id="14" name="ripper" x="549" y="457.333"/>
+  <object id="15" name="ripper" x="359.167" y="174.667"/>
+  <object id="18" name="exit" x="592" y="578">
    <properties>
     <property name="exitId" value="1"/>
     <property name="exitTo" value="test2"/>
     <property name="linkTo" value="1"/>
    </properties>
   </object>
-  <object id="14" name="ripper" x="549" y="457.333"/>
-  <object id="15" name="ripper" x="359.167" y="174.667"/>
  </objectgroup>
 </map>

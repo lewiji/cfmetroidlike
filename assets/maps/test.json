@@ -32,24 +32,6 @@
          "name":"objects",
          "objects":[
                 {
-                 "gid":141,
-                 "height":32,
-                 "id":9,
-                 "name":"exit",
-                 "properties":
-                    {
-                     "exitId":"1",
-                     "exitTo":"test2",
-                     "linkTo":"1"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":608,
-                 "y":591
-                }, 
-                {
                  "height":0,
                  "id":14,
                  "name":"ripper",
@@ -78,6 +60,23 @@
                  "width":0,
                  "x":359.167,
                  "y":174.667
+                }, 
+                {
+                 "height":0,
+                 "id":18,
+                 "name":"exit",
+                 "properties":
+                    {
+                     "exitId":"1",
+                     "exitTo":"test2",
+                     "linkTo":"1"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":592,
+                 "y":578
                 }],
          "offsetx":32,
          "offsety":0,
@@ -88,7 +87,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":16,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "properties":
     {
