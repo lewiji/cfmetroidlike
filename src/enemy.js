@@ -7,8 +7,7 @@ define([
     	Entity.call(this, game, x, y, texture, key);
 
         this.kill();
-
-    	this.game.physics.enable(this);
+        
         this.body.immovable = true;
 
         this.maxHealth = 1;
@@ -28,9 +27,7 @@ define([
         } else {
             data.health = this.maxHealth;
         }
-        this.body.setSize(this.width, this.height);
         Entity.prototype.spawn.call(this, x, y, data);
-
     };
 
     Enemy.prototype.hit = function (bullet) {

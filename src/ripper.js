@@ -16,12 +16,17 @@ define([
     Ripper.prototype.constructor = Ripper;
 
     Ripper.prototype.spawn = function (x, y, data) {
+        if (!data) {
+            data = {};
+        }
+        data.animations = [
+            ['fly', ['bee.png', 'bee_move.png'], 5, true, false]
+        ];
+        data.defaultAnimation = 'fly';
         Enemy.prototype.spawn.call(this, x, y, data);
         this.body.velocity.x = this.xSpeed;
         this.body.bounce.x = 1;
         this.body.allowGravity = false;
-        this.animations.add('fly', ['bee.png', 'bee_move.png'], 5, true, false);
-        this.animations.play('fly');
     };
 
     Ripper.prototype.update = function () {

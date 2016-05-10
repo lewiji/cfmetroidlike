@@ -17,11 +17,15 @@ define([
     Crawler.prototype.constructor = Crawler;
 
     Crawler.prototype.spawn = function (x, y, data) {
+        if (!data) {
+            data = {};
+        }
+        data.animations = [
+            ['crawl', ['ladybug.png', 'ladybug_move.png'], 5, true, false]
+        ];
+        data.defaultAnimation = 'crawl';
         Enemy.prototype.spawn.call(this, x, y, data);
         this.body.velocity.x = this.xSpeed;
-        //this.body.bounce.x = 1;
-        this.animations.add('crawl', ['ladybug.png', 'ladybug_move.png'], 5, true, false);
-        this.animations.play('crawl');
     };
 
     Crawler.prototype.update = function () {
