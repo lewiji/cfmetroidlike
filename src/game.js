@@ -20,14 +20,16 @@ define([
         	this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         	this.createMap();
-        	this.createEntities();   	
+
+        	bulletPool = new Pool(this.game, Bullet, 30);
+        	player = new Player(this.game, bulletPool);
 
         	this.game.physics.arcade.gravity.y = 400;
         },
 
         update: function () {
         	this.game.physics.arcade.collide(player, collisionLayer);
-        	this.game.physics.arcade.collide(player, exitLayer, this.exitLevel);
+        	this.game.physics.arcade.collide(player, exitLayer, this.exitLevel, null, this);
         	this.game.physics.arcade.overlap(player, enemiesLayer, player.hit, null, player);
 
         	bulletPool.forEachAlive(this.collideBulletsWithTerrain, this);
@@ -54,8 +56,18 @@ define([
         	
         },
 
-        createMap: function () {
-        	map = this.add.tilemap('testLevel');
+        createMap: function (mapName, linkTo) {
+        	if (mapName === undefined) {
+        		mapName = 'test1';
+        	}
+        	if (map !== undefined) {
+        		map.destroy();
+        		backgroundLayer.destroy();
+        		collisionLayer.destroy();
+        		exitLayer.destroy();
+        		enemiesLayer.destroy();
+        	}
+        	map = this.add.tilemap(mapName);
         	map.addTilesetImage('LofiScifi', 'testTileset');
 
         	backgroundLayer = map.createLayer('background');
@@ -72,20 +84,19 @@ define([
         	map.setCollision(771, true, collisionLayer);
 
         	this.processMapCollisionProperties();
-        	exitLayer.forEach(this.processExits, this);
+        	exitLayer.forEach(this.processExits, this, false, linkTo);
 
         	backgroundLayer.resizeWorld();
+
+        	this.createEntities();   
         },
 
         createEntities: function () {
         	// created in draw order
-        	bulletPool = new Pool(this.game, Bullet, 30);
 
         	enemiesLayer = this.game.add.group();
         	
         	this.createEnemies();
-
-        	player = new Player(this.game, bulletPool);
         },
 
         createEnemies: function () {
@@ -110,17 +121,21 @@ define([
         	}
         },
 
-        processExits: function (exit, x, y) {
+        processExits: function (exit, linkTo) {
 			if (exit.position.x > this.game.width / 2) {
         		exit.body.offset.x = map.tileWidth / 2;
         	} else {
         		exit.body.offset.x = -map.tileWidth / 2;
         	}
+        	if (exit.exitId === linkTo) {
+        		player.position.setTo(exit.position.x, exit.position.y);
+        	}
         },
 
         exitLevel: function (collider, tile) {
         	if (tile.exitTo !== undefined) {
-
+        		this.createMap(tile.exitTo, tile.linkTo);
+        		this.game.world.bringToTop(player);
         	}
         },
 
