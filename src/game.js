@@ -52,11 +52,11 @@ define([
         		this.game.debug.body(e);
         	}, this);
 
-        	this.game.debug.body(player);*/
+        	this.game.debug.body(player);
 
         	exitLayer.forEach(function (e) {
         	        		this.game.debug.body(e);
-        	}, this);
+        	}, this);*/
         	
         },
 
