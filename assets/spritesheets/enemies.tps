@@ -100,7 +100,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -188,6 +188,19 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/bat.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/bat_dead.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/bat_fly.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/bat_hang.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/fly.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/fly_dead.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/fly_fly.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/ghost.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/ghost_dead.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/ghost_normal.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/slimeBlue.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/slimeBlue_blue.png</key>
+            <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/slimeBlue_dead.png</key>
             <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/barnacle.png</key>
             <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/barnacle_attack.png</key>
             <key type="filename">D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/barnacle_dead.png</key>
@@ -219,6 +232,19 @@
             <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/ladybug_move.png</filename>
             <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/ladybug.png</filename>
             <filename>D:/AssetLibrary/kenney1/Art/Platformer pack redux (360 assets)/PNG/Enemies/ladybug_fly.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/bat_hang.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/bat.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/bat_dead.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/bat_fly.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/fly_fly.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/fly.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/fly_dead.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/ghost_normal.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/ghost.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/ghost_dead.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/slimeBlue_dead.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/slimeBlue.png</filename>
+            <filename>D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Extra animations and enemies (165 assets)/Enemy sprites/slimeBlue_blue.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

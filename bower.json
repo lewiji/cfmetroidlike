@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "phaser": "^2.4.7",
-    "requirejs": "^2.2.0"
+    "requirejs": "^2.2.0",
+    "phaser-tiled": "https://github.com/englercj/phaser-tiled.git#^2.0.2"
   }
 }

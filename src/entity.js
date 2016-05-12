@@ -60,5 +60,9 @@ define([
 
     };
 
+    Entity.prototype.death = function () {
+        
+    }
+
     return Entity;
 });
