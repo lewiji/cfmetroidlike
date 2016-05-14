@@ -1,13 +1,13 @@
 define([
-    'phaser', 'player', 'pool', 'bullet', 'ripper', 'crawler'
-], function (Phaser, Player, Pool, Bullet, Ripper, Crawler) { 
+    'phaser', 'player', 'pool', 'bullet', 'ripper', 'crawler', 'friend'
+], function (Phaser, Player, Pool, Bullet, Ripper, Crawler, Friend) { 
     'use strict';
 
     function Game() {
     	console.log('Loading game module');
     }
 
-    var map, backgroundLayer, collisionLayer, exitLayer, player, bulletPool, enemiesLayer;
+    var map, backgroundLayer, collisionLayer, exitLayer, player, bulletPool, enemiesLayer, friendsLayer;
     
     Game.prototype = {
         constructor: Game,
@@ -36,6 +36,7 @@ define([
         	this.game.physics.arcade.overlap(bulletPool, enemiesLayer, this.collideBulletsWithEnemies, null, this);
 
         	enemiesLayer.forEachAlive(this.updateEnemies, this);
+            friendsLayer.forEachAlive(this.updateFriends, this);
 
         	player.update();
         	bulletPool.update();
@@ -82,7 +83,7 @@ define([
             this.layers = [];
             for (var i = 0; i < mapData.layers.length; i++) {
                 if (mapData.layers[i].type == "tilelayer") {
-                    var layer = map.createLayer(mapData.layers[i].name);
+                    var layer = map.createLayer(mapData.layers[i].name, undefined, undefined, undefined, true);
                     this.layers.push(layer);
                     if (i === 0) {
                         layer.resizeWorld();
@@ -116,8 +117,10 @@ define([
         	// created in draw order
 
         	enemiesLayer = this.game.add.group();
+            friendsLayer = this.game.add.group();
         	
         	this.createEnemies();
+            this.createFriends();
         },
 
         createEnemies: function () {
@@ -125,9 +128,18 @@ define([
         	map.createFromObjects('objects', 'crawler', 'enemies', undefined, true, false, enemiesLayer, Crawler, false);
         },
 
+        createFriends: function () {
+            map.createFromObjects('objects', 'villager', 'friends', undefined, true, false, friendsLayer, Friend, false);
+        },
+
         updateEnemies: function (enemy) {
         	this.game.physics.arcade.collide(enemy, collisionLayer, enemy.collideTerrain, null, enemy);
         	enemy.update();
+        },
+
+        updateFriends: function (friend) {
+            this.game.physics.arcade.collide(friend, collisionLayer, friend.collideTerrain, null, friend);
+            friend.update();
         },
 
         processMapCollisionProperties: function () {
