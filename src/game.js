@@ -117,7 +117,12 @@ define([
         	this.processMapCollisionProperties();
         	exitLayer.forEach(this.processExits, this, false, linkTo);
 
-        	this.createEntities();   
+        	this.createEntities();
+
+            if (player !== undefined) {
+                this.game.camera.setPosition(player.x, player.y);
+            }
+            
         },
 
         createEntities: function () {
