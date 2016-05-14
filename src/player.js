@@ -34,6 +34,8 @@ define([
 
         cursors = this.game.input.keyboard.createCursorKeys();
 
+        cursors.up.onDown.add(Player.prototype.handleUpAction, this);
+
         fireKey = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
         fireKey.onDown.add(this.fireBullet, this);
 
@@ -91,6 +93,7 @@ define([
         if (friend.patrolling) {
             friend.pauseForPlayer();
         }
+        this.overlappingFriend = friend;
     };
 
     Player.prototype.handleInput = function () {
@@ -162,6 +165,14 @@ define([
             
         }
     };
+
+    Player.prototype.handleUpAction = function () {
+        if (this.overlappingFriend && this.overlappingFriend.body.hitTest(this.body.center.x, this.body.center.y)) {
+            this.overlappingFriend.createDialog();
+        } else {
+            this.overlappingFriend = undefined;
+        }
+    }
 
     Player.prototype.handleMoving = function () {
         if (cursors.left.isDown && !this.state.isDucking) {

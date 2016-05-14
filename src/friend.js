@@ -87,6 +87,34 @@ define([
         this.game.time.events.add(3000, Friend.prototype.resetPatrol, this);
     };
 
+    Friend.prototype.createDialog = function () {
+        if (this.dialogBox !== undefined) {
+            return;
+        }
+        this.dialogBox = this.game.add.sprite(0, 0, 'ui', 'panel_brown.png');
+        this.dialogBox.anchor.setTo(0.5, 1);
+        this.dialogBox.y -= this.height;
+
+        this.dialogText = this.game.add.text(-this.dialogBox.width / 2, -this.dialogBox.height, 'Hi friend!', 
+            {
+                fontSize: 20,
+                boundsAlignH: 'center',
+                boundsAlignV: 'middle'
+            }
+        );
+        this.dialogText.setTextBounds(0, 0, this.dialogBox.width, this.dialogBox.height);
+        this.dialogBox.addChild(this.dialogText);
+
+        this.addChild(this.dialogBox);
+
+        this.game.time.events.add(3000, Friend.prototype.destroyDialog, this);
+    };
+
+    Friend.prototype.destroyDialog = function () {
+        this.dialogBox.destroy();
+        this.dialogBox = undefined;
+    };
+
     Friend.prototype.death = function () {
         // spawn pickups here?
         this.kill();

@@ -33,6 +33,7 @@ define([
             this.load.atlasJSONArray('enemies', 'assets/spritesheets/enemies.png', 'assets/spritesheets/enemies.json');
             this.load.atlasJSONArray('friends', 'assets/spritesheets/friends.png', 'assets/spritesheets/friends.json');
             this.load.atlasJSONArray('backgrounds', 'assets/spritesheets/backgrounds.png', 'assets/spritesheets/backgrounds.json');
+            this.load.atlasJSONArray('ui', 'assets/spritesheets/ui.png', 'assets/spritesheets/ui.json');
         },
 
         create: function () {

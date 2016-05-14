@@ -58,7 +58,11 @@ define([
 
         	exitLayer.forEach(function (e) {
         	        		this.game.debug.body(e);
-        	}, this);*/
+        	}, this);
+
+            friendsLayer.forEach(function (e) {
+                this.game.debug.body(e);
+            }, this);*/
         	
         },
 
