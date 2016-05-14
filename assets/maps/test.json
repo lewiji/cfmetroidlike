@@ -119,11 +119,11 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":25,
+ "nextobjectid":28,
  "orientation":"orthogonal",
  "properties":
     {
-
+     "background":"bg_castle.png"
     },
  "renderorder":"right-down",
  "tileheight":32,
@@ -131,7 +131,7 @@
         {
          "columns":16,
          "firstgid":1,
-         "image":"sci-fi-platformer-tiles-32x32-extension_0.png",
+         "image":"..\/spritesheets\/sci-fi-platformer-tiles-32x32-extension_0.png",
          "imageheight":3520,
          "imagewidth":512,
          "margin":0,

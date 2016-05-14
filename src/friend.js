@@ -64,6 +64,9 @@ define([
     };
 
     Friend.prototype.resetPatrol = function () {
+        if (this.alive === false) {
+            return;
+        }
         this.body.velocity.x = 0;
         this.game.time.events.add(this.game.rnd.integerInRange(1000, 5000), function () {
             this.moving = false;

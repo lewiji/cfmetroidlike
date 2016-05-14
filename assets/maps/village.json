@@ -107,11 +107,11 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "properties":
     {
-
+     "background":"bg.png"
     },
  "renderorder":"right-down",
  "tileheight":70,

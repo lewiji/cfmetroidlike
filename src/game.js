@@ -7,7 +7,7 @@ define([
     	console.log('Loading game module');
     }
 
-    var map, backgroundLayer, collisionLayer, exitLayer, player, bulletPool, enemiesLayer, friendsLayer;
+    var map, backgroundTileSprite, backgroundLayer, collisionLayer, exitLayer, player, bulletPool, enemiesLayer, friendsLayer;
     
     Game.prototype = {
         constructor: Game,
@@ -72,6 +72,8 @@ define([
                 }
         		exitLayer.destroy();
         		enemiesLayer.destroy();
+                friendsLayer.destroy();
+                backgroundTileSprite.destroy();
         	}
             var mapData = this.game.cache.getTilemapData(mapName).data;
         	map = this.add.tilemap(mapName);
@@ -93,6 +95,11 @@ define([
                     }
                 }
                 
+            }
+
+            if (map.properties.background !== undefined) {
+                backgroundTileSprite = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, 'backgrounds', map.properties.background);
+                backgroundTileSprite.sendToBack();
             }
 
         	exitLayer = this.game.add.group();
