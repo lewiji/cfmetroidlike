@@ -24,9 +24,12 @@ define([
             this.load.tilemap('test1', 'assets/maps/test.json', null, Phaser.Tilemap.TILED_JSON);
             this.load.tilemap('test2', 'assets/maps/test2.json', null, Phaser.Tilemap.TILED_JSON);
             this.load.tilemap('village', 'assets/maps/village.json', null, Phaser.Tilemap.TILED_JSON);
+            this.load.tilemap('inn', 'assets/maps/inn.json', null, Phaser.Tilemap.TILED_JSON);
+
             this.load.image('LofiScifi', 'assets/spritesheets/sci-fi-platformer-tiles-32x32-extension_0.png');
             this.load.image('sheet', 'assets/spritesheets/buildings.png');
             this.load.image('tiles_general', 'assets/spritesheets/tiles_general.png');
+
             this.load.atlasJSONArray('player', 'assets/spritesheets/player-0.png', 'assets/spritesheets/player.json');
             this.load.atlasJSONArray('lasers', 'assets/spritesheets/lasers.png', 'assets/spritesheets/lasers.json');
             this.load.atlasJSONArray('debug', 'assets/spritesheets/debug.png', 'assets/spritesheets/debug.json');

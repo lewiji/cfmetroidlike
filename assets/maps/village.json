@@ -99,6 +99,23 @@
                  "width":0,
                  "x":850,
                  "y":1276
+                }, 
+                {
+                 "height":100.666666666667,
+                 "id":6,
+                 "name":"door",
+                 "properties":
+                    {
+                     "exitId":"2",
+                     "exitTo":"inn",
+                     "linkTo":"1"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":60,
+                 "x":423.333333333333,
+                 "y":1231.33333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -107,7 +124,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":6,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "properties":
     {

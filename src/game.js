@@ -7,7 +7,7 @@ define([
     	console.log('Loading game module');
     }
 
-    var map, backgroundTileSprite, backgroundLayer, collisionLayer, exitLayer, player, bulletPool, enemiesLayer, friendsLayer;
+    var map, backgroundTileSprite, backgroundLayer, collisionLayer, exitLayer, doorLayer, player, bulletPool, enemiesLayer, friendsLayer;
     
     Game.prototype = {
         constructor: Game,
@@ -29,7 +29,10 @@ define([
 
         update: function () {
         	this.game.physics.arcade.collide(player, collisionLayer);
+
         	this.game.physics.arcade.collide(player, exitLayer, this.exitLevel, null, this);
+            this.game.physics.arcade.overlap(player, doorLayer, player.overlapsDoor, null, player);
+
             this.game.physics.arcade.overlap(player, enemiesLayer, player.hit, null, player);
             this.game.physics.arcade.overlap(player, friendsLayer, player.overlapsFriend, null, player);
 
@@ -62,6 +65,10 @@ define([
 
             friendsLayer.forEach(function (e) {
                 this.game.debug.body(e);
+            }, this);
+
+            doorLayer.forEach(function (e) {
+                            this.game.debug.body(e);
             }, this);*/
         	
         },
@@ -76,6 +83,7 @@ define([
                     this.layers[i].destroy();
                 }
         		exitLayer.destroy();
+                doorLayer.destroy();
         		enemiesLayer.destroy();
                 friendsLayer.destroy();
                 backgroundTileSprite.destroy();
@@ -97,6 +105,14 @@ define([
                     }
                     if (mapData.layers[i].name == "collision") {
                         collisionLayer = layer;
+                        var layerData = layer.layer.data;
+                        for (var j = 0; j < layerData.length; j++) {
+                            for (var k = 0; k < layerData[j].length; k++) {
+                                if (layerData[j][k].index > -1) {
+                                    map.setCollision(layerData[j][k].index, true, collisionLayer);
+                                }
+                            }
+                        }
                     }
                 }
                 
@@ -109,18 +125,24 @@ define([
 
         	exitLayer = this.game.add.group();
         	exitLayer.enableBody = true;
-        	map.createFromObjects('objects', 'exit', 'debug', 1, true, false, exitLayer);
-
+            map.createFromObjects('objects', 'exit', 'debug', 1, true, false, exitLayer, undefined, false);
         	exitLayer.setAll('body.moves', false);
+
+            doorLayer = this.game.add.group();
+            doorLayer.enableBody = true;
+            map.createFromObjects('objects', 'door', 'debug', 1, true, false, doorLayer, undefined, false);
+            doorLayer.setAll('body.moves', false);
+            doorLayer.alpha = 0;
 
 
         	collisionLayer.visible = false;
-            map.setCollision(52, true, collisionLayer);
+           /* map.setCollision(52, true, collisionLayer);
             map.setCollision(99, true, collisionLayer);
-        	map.setCollision(771, true, collisionLayer);
+        	map.setCollision(771, true, collisionLayer);*/
 
         	this.processMapCollisionProperties();
-        	exitLayer.forEach(this.processExits, this, false, linkTo);
+            exitLayer.forEach(this.processExits, this, false, linkTo);
+            doorLayer.forEach(this.processDoors, this, false, linkTo);
 
         	this.createEntities();
             
@@ -178,9 +200,22 @@ define([
         		exit.body.offset.x = -map.tileWidth / 2;
         		exit.frame = 0;
         	}
-        	if (exit.exitId === linkTo) {
-        		player.position.setTo(exit.position.x, exit.position.y);
-        	}
+            this.linkPlayerToExit(exit, linkTo);
+        	
+        },
+
+        processDoors: function (exit, linkTo) {
+            this.linkPlayerToExit(exit, linkTo);
+        },
+
+        linkPlayerToExit: function (exit, linkTo) {
+            if (exit.exitId === linkTo) {
+                player.position.setTo(exit.position.x, exit.position.y + exit.height);
+                if (exit.name == "door") {
+                    player.overlappingDoor = exit;
+                    player.position.x += exit.width / 2;
+                }                
+            }
         },
 
         exitLevel: function (collider, tile) {

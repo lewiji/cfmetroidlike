@@ -4,6 +4,7 @@ define([
     'use strict';
 
     var friendTextures = ['alienBeige.png', 'alienBlue.png', 'alienPink.png'];
+    var phrases = ['Hi friend!', 'Willkommen!', 'Whaddup', 'Really long greeting!'];
 
     function Friend (game, x, y, texture, key) {
     	Entity.call(this, game, x, y, texture, key);
@@ -92,18 +93,22 @@ define([
             return;
         }
         this.dialogBox = this.game.add.sprite(0, 0, 'ui', 'panel_brown.png');
+        this.dialogBox.width *= 2; 
         this.dialogBox.anchor.setTo(0.5, 1);
         this.dialogBox.y -= this.height;
 
-        this.dialogText = this.game.add.text(-this.dialogBox.width / 2, -this.dialogBox.height, 'Hi friend!', 
+        this.dialogText = this.game.add.text(-this.dialogBox.width / 2, -this.dialogBox.height, Phaser.ArrayUtils.getRandomItem(phrases), 
             {
                 fontSize: 20,
                 boundsAlignH: 'center',
-                boundsAlignV: 'middle'
+                boundsAlignV: 'middle',
+                wordWrap: true,
+                wordWrapWidth: this.dialogBox.width
             }
         );
-        this.dialogText.setTextBounds(0, 0, this.dialogBox.width, this.dialogBox.height);
+        this.dialogText.setTextBounds(this.dialogBox.width / 2, 0, this.dialogBox.width, this.dialogBox.height);
         this.dialogBox.addChild(this.dialogText);
+        this.dialogText.width /= 2;
 
         this.addChild(this.dialogBox);
 

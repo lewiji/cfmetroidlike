@@ -96,6 +96,10 @@ define([
         this.overlappingFriend = friend;
     };
 
+    Player.prototype.overlapsDoor = function (player, door) {
+        this.overlappingDoor = door;
+    };
+
     Player.prototype.handleInput = function () {
         // set states manually per control - if this gets more complicated may need a more
         // robust state machine implementation
@@ -167,10 +171,15 @@ define([
     };
 
     Player.prototype.handleUpAction = function () {
-        if (this.overlappingFriend && this.overlappingFriend.body.hitTest(this.body.center.x, this.body.center.y)) {
+        if (this.overlappingFriend && this.overlappingFriend.body && this.overlappingFriend.body.hitTest(this.body.center.x, this.body.center.y)) {
             this.overlappingFriend.createDialog();
-        } else {
             this.overlappingFriend = undefined;
+        }
+
+        if (this.overlappingDoor && this.overlappingDoor.body && this.overlappingDoor.body.hitTest(this.body.center.x, this.body.center.y)) {
+            // todo maintain health
+            this.reset();
+            this.game.state.getCurrentState().exitLevel(this, this.overlappingDoor);
         }
     }
 
