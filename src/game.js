@@ -30,7 +30,8 @@ define([
         update: function () {
         	this.game.physics.arcade.collide(player, collisionLayer);
         	this.game.physics.arcade.collide(player, exitLayer, this.exitLevel, null, this);
-        	this.game.physics.arcade.overlap(player, enemiesLayer, player.hit, null, player);
+            this.game.physics.arcade.overlap(player, enemiesLayer, player.hit, null, player);
+            this.game.physics.arcade.overlap(player, friendsLayer, player.overlapsFriend, null, player);
 
         	bulletPool.forEachAlive(this.collideBulletsWithTerrain, this);
         	this.game.physics.arcade.overlap(bulletPool, enemiesLayer, this.collideBulletsWithEnemies, null, this);
@@ -118,10 +119,6 @@ define([
         	exitLayer.forEach(this.processExits, this, false, linkTo);
 
         	this.createEntities();
-
-            if (player !== undefined) {
-                this.game.camera.setPosition(player.x, player.y);
-            }
             
         },
 

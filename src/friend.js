@@ -59,7 +59,11 @@ define([
 
             this.moving = true;
 
-            this.game.time.events.add(this.game.rnd.integerInRange(1000, 5000), Friend.prototype.resetPatrol, this);
+            this.patrolTimeout = this.game.time.events.add(this.game.rnd.integerInRange(1000, 5000), Friend.prototype.resetPatrol, this);
+        }
+
+        if (!this.patrolling) {
+            this.body.velocity.x = 0;
         }
     };
 
@@ -67,10 +71,20 @@ define([
         if (this.alive === false) {
             return;
         }
+        this.patrolling = true;
         this.body.velocity.x = 0;
-        this.game.time.events.add(this.game.rnd.integerInRange(1000, 5000), function () {
+        this.game.time.events.add(this.game.rnd.integerInRange(1000, 2000), function () {
             this.moving = false;
         }, this);
+    };
+
+    Friend.prototype.pauseForPlayer = function () {
+        this.patrolling = false;
+        if (this.patrolTimeout) {
+            this.game.time.events.remove(this.patrolTimeout);
+        }
+        
+        this.game.time.events.add(3000, Friend.prototype.resetPatrol, this);
     };
 
     Friend.prototype.death = function () {

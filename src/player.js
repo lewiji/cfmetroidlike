@@ -85,7 +85,13 @@ define([
             
         }
         this.bulletPool.create(this.x, this.y - this.height / 2, {dx: bulletDx, dy: bulletDy});
-    }
+    };
+
+    Player.prototype.overlapsFriend = function (player, friend) {
+        if (friend.patrolling) {
+            friend.pauseForPlayer();
+        }
+    };
 
     Player.prototype.handleInput = function () {
         // set states manually per control - if this gets more complicated may need a more

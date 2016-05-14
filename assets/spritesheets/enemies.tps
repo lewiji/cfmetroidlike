@@ -170,7 +170,7 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>2</uint>
             <key>trimThreshold</key>
             <uint>2</uint>
             <key>trimMargin</key>

@@ -2,7 +2,7 @@
 
 {
 	"filename": "barnacle.png",
-	"frame": {"x":48,"y":73,"w":48,"h":53},
+	"frame": {"x":179,"y":60,"w":48,"h":53},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":53},
@@ -10,7 +10,7 @@
 },
 {
 	"filename": "barnacle_attack.png",
-	"frame": {"x":0,"y":73,"w":48,"h":54},
+	"frame": {"x":167,"y":2,"w":48,"h":54},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":54},
@@ -18,7 +18,7 @@
 },
 {
 	"filename": "barnacle_dead.png",
-	"frame": {"x":96,"y":73,"w":48,"h":53},
+	"frame": {"x":219,"y":2,"w":48,"h":53},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":53},
@@ -26,7 +26,7 @@
 },
 {
 	"filename": "bat.png",
-	"frame": {"x":211,"y":0,"w":70,"h":47},
+	"frame": {"x":333,"y":2,"w":70,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":47},
@@ -34,7 +34,7 @@
 },
 {
 	"filename": "bat_dead.png",
-	"frame": {"x":240,"y":47,"w":70,"h":47},
+	"frame": {"x":335,"y":53,"w":70,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":47},
@@ -42,7 +42,7 @@
 },
 {
 	"filename": "bat_fly.png",
-	"frame": {"x":414,"y":90,"w":88,"h":37},
+	"frame": {"x":537,"y":2,"w":88,"h":37},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":37},
@@ -50,7 +50,7 @@
 },
 {
 	"filename": "bat_hang.png",
-	"frame": {"x":202,"y":50,"w":38,"h":48},
+	"frame": {"x":293,"y":56,"w":38,"h":48},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":48},
@@ -58,7 +58,7 @@
 },
 {
 	"filename": "bee.png",
-	"frame": {"x":281,"y":0,"w":54,"h":46},
+	"frame": {"x":2,"y":79,"w":54,"h":46},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":46},
@@ -66,7 +66,7 @@
 },
 {
 	"filename": "bee_dead.png",
-	"frame": {"x":310,"y":46,"w":54,"h":46},
+	"frame": {"x":60,"y":79,"w":54,"h":46},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":46},
@@ -74,7 +74,7 @@
 },
 {
 	"filename": "bee_move.png",
-	"frame": {"x":392,"y":0,"w":58,"h":40},
+	"frame": {"x":409,"y":51,"w":58,"h":40},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":40},
@@ -82,7 +82,7 @@
 },
 {
 	"filename": "fly.png",
-	"frame": {"x":335,"y":0,"w":57,"h":45},
+	"frame": {"x":118,"y":79,"w":57,"h":45},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":45},
@@ -90,7 +90,7 @@
 },
 {
 	"filename": "fly_dead.png",
-	"frame": {"x":364,"y":45,"w":57,"h":45},
+	"frame": {"x":407,"y":2,"w":57,"h":45},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":45},
@@ -98,7 +98,7 @@
 },
 {
 	"filename": "fly_fly.png",
-	"frame": {"x":421,"y":40,"w":65,"h":39},
+	"frame": {"x":468,"y":2,"w":65,"h":39},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":39},
@@ -106,7 +106,7 @@
 },
 {
 	"filename": "frog.png",
-	"frame": {"x":502,"y":71,"w":54,"h":37},
+	"frame": {"x":471,"y":88,"w":54,"h":37},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":37},
@@ -114,7 +114,7 @@
 },
 {
 	"filename": "frog_dead.png",
-	"frame": {"x":144,"y":73,"w":58,"h":50},
+	"frame": {"x":231,"y":59,"w":58,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":50},
@@ -122,7 +122,7 @@
 },
 {
 	"filename": "frog_move.png",
-	"frame": {"x":153,"y":0,"w":58,"h":50},
+	"frame": {"x":271,"y":2,"w":58,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":50},
@@ -130,7 +130,7 @@
 },
 {
 	"filename": "ghost.png",
-	"frame": {"x":0,"y":0,"w":51,"h":73},
+	"frame": {"x":2,"y":2,"w":51,"h":73},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":73},
@@ -138,7 +138,7 @@
 },
 {
 	"filename": "ghost_dead.png",
-	"frame": {"x":51,"y":0,"w":51,"h":73},
+	"frame": {"x":57,"y":2,"w":51,"h":73},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":73},
@@ -146,7 +146,7 @@
 },
 {
 	"filename": "ghost_normal.png",
-	"frame": {"x":102,"y":0,"w":51,"h":73},
+	"frame": {"x":112,"y":2,"w":51,"h":73},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":73},
@@ -154,7 +154,7 @@
 },
 {
 	"filename": "ladybug.png",
-	"frame": {"x":502,"y":0,"w":56,"h":32},
+	"frame": {"x":583,"y":43,"w":56,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":32},
@@ -162,7 +162,7 @@
 },
 {
 	"filename": "ladybug_fly.png",
-	"frame": {"x":502,"y":32,"w":55,"h":39},
+	"frame": {"x":471,"y":45,"w":55,"h":39},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":55,"h":39},
@@ -170,7 +170,7 @@
 },
 {
 	"filename": "ladybug_move.png",
-	"frame": {"x":357,"y":92,"w":57,"h":32},
+	"frame": {"x":582,"y":83,"w":57,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":32},
@@ -178,7 +178,7 @@
 },
 {
 	"filename": "slimeBlue.png",
-	"frame": {"x":259,"y":94,"w":49,"h":34},
+	"frame": {"x":529,"y":88,"w":49,"h":34},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":34},
@@ -186,7 +186,7 @@
 },
 {
 	"filename": "slimeBlue_blue.png",
-	"frame": {"x":202,"y":98,"w":57,"h":30},
+	"frame": {"x":409,"y":95,"w":57,"h":30},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":30},
@@ -194,7 +194,7 @@
 },
 {
 	"filename": "slimeBlue_dead.png",
-	"frame": {"x":308,"y":94,"w":49,"h":34},
+	"frame": {"x":530,"y":45,"w":49,"h":34},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":34},
@@ -205,8 +205,8 @@
 	"version": "1.0",
 	"image": "enemies.png",
 	"format": "RGBA8888",
-	"size": {"w":558,"h":128},
+	"size": {"w":657,"h":127},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:707a7094ddc345f086d893f9dfae296e:67ec12c9d83c430f1907957424b6f8c9:9b2a76c8b2a408b3f0547a4eddda1e06$"
+	"smartupdate": "$TexturePacker:SmartUpdate:aa137d0138c2c9434beb78be906b79fe:67ec12c9d83c430f1907957424b6f8c9:9b2a76c8b2a408b3f0547a4eddda1e06$"
 }
 }

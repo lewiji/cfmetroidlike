@@ -1822,7 +1822,7 @@
   </data>
  </layer>
  <objectgroup name="objects">
-  <object id="1" name="exit" x="12" y="1302">
+  <object id="1" name="exit" x="-18.303" y="1298.97">
    <properties>
     <property name="exitId" value="1"/>
     <property name="exitTo" value="test2"/>
