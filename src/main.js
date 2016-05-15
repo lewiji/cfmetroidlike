@@ -8,8 +8,6 @@
             phaser: '../bower_components/phaser/build/phaser.min'
         },
 
-        urlArgs: "v=" +  (new Date()).getTime(),
-
         shim: {
             'phaser': {
                 exports: 'Phaser'

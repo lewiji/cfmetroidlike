@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="28">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="30">
  <properties>
   <property name="background" value="bg_castle.png"/>
  </properties>
@@ -855,5 +855,6 @@
    </properties>
   </object>
   <object id="24" name="crawler" x="215" y="274"/>
+  <object id="28" name="slime" x="288" y="31"/>
  </objectgroup>
 </map>

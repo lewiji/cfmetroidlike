@@ -1,6 +1,6 @@
 define([
-    'phaser', 'player', 'pool', 'bullet', 'ripper', 'crawler', 'friend'
-], function (Phaser, Player, Pool, Bullet, Ripper, Crawler, Friend) { 
+    'phaser', 'player', 'pool', 'bullet', 'ripper', 'crawler', 'slime', 'friend'
+], function (Phaser, Player, Pool, Bullet, Ripper, Crawler, Slime, Friend) { 
     'use strict';
 
     function Game() {
@@ -19,10 +19,10 @@ define([
         create: function () {
         	this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        	this.createMap();
-
         	bulletPool = new Pool(this.game, Bullet, 30);
         	player = new Player(this.game, bulletPool);
+
+            this.createMap();
 
         	this.game.physics.arcade.gravity.y = 400;
         },
@@ -134,11 +134,7 @@ define([
             doorLayer.setAll('body.moves', false);
             doorLayer.alpha = 0;
 
-
         	collisionLayer.visible = false;
-           /* map.setCollision(52, true, collisionLayer);
-            map.setCollision(99, true, collisionLayer);
-        	map.setCollision(771, true, collisionLayer);*/
 
         	this.processMapCollisionProperties();
             exitLayer.forEach(this.processExits, this, false, linkTo);
@@ -160,7 +156,8 @@ define([
 
         createEnemies: function () {
         	map.createFromObjects('objects', 'ripper', 'enemies', undefined, true, false, enemiesLayer, Ripper, false);
-        	map.createFromObjects('objects', 'crawler', 'enemies', undefined, true, false, enemiesLayer, Crawler, false);
+            map.createFromObjects('objects', 'crawler', 'enemies', undefined, true, false, enemiesLayer, Crawler, false);
+            map.createFromObjects('objects', 'slime', 'enemies', undefined, true, false, enemiesLayer, Slime, false);
         },
 
         createFriends: function () {

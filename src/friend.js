@@ -89,6 +89,7 @@ define([
     };
 
     Friend.prototype.createDialog = function () {
+        // TODO create proper dialog module, use pooling for dialog
         if (this.dialogBox !== undefined) {
             return;
         }

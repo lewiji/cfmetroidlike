@@ -3,7 +3,7 @@ define([
 ], function (Phaser, Entity) { 
     'use strict';
 
-    var cursors, fireKey, jumpKey, invulnerableTween;
+    var cursors, fireKey, jumpKey, invulnerableTween, playerInstance;
     var jumpTimer = 0;
 
     function Player (game, bulletPool) {
@@ -40,6 +40,8 @@ define([
         fireKey.onDown.add(this.fireBullet, this);
 
         jumpKey = this.game.input.keyboard.addKey(Phaser.Keyboard.Z);
+
+        playerInstance = this;
     
         return this;
     }
@@ -55,6 +57,10 @@ define([
 
         this.handleInput();
         this.handleAnimation();
+    };
+
+    Player.getInstance = function () {
+        return playerInstance;
     };
 
     Player.prototype.setProperties = function () {
