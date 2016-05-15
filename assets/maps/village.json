@@ -39,7 +39,7 @@
          "name":"objects",
          "objects":[
                 {
-                 "height":0,
+                 "height":218.181818181818,
                  "id":1,
                  "name":"exit",
                  "properties":
@@ -51,9 +51,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":0,
-                 "x":-18.3030303030303,
-                 "y":1298.9696969697
+                 "width":21.0909393939394,
+                 "x":-39.3939393939394,
+                 "y":1078.78787878788
                 }, 
                 {
                  "height":0,
@@ -101,7 +101,7 @@
                  "y":1276
                 }, 
                 {
-                 "height":100.666666666667,
+                 "height":100.667,
                  "id":6,
                  "name":"door",
                  "properties":
@@ -114,8 +114,8 @@
                  "type":"",
                  "visible":true,
                  "width":60,
-                 "x":423.333333333333,
-                 "y":1231.33333333333
+                 "x":423.333,
+                 "y":1231.33
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -124,7 +124,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":7,
+ "nextobjectid":8,
  "orientation":"orthogonal",
  "properties":
     {

@@ -7,6 +7,11 @@ define([
     var jumpTimer = 0;
 
     function Player (game, bulletPool) {
+        if (playerInstance !== undefined) {
+            // singleton pattern... for now?
+            return playerInstance;
+        }
+
         // Extend Entity
         Entity.call(this, game);
 
@@ -46,6 +51,10 @@ define([
         return this;
     }
 
+    Player.getInstance = function () {
+        return playerInstance;
+    };
+
     // Extend Entity
     Player.prototype = Object.create(Entity.prototype);
     Player.prototype.constructor = Player;
@@ -54,13 +63,8 @@ define([
         // default x velocity to 0 = instant stop
         this.body.velocity.x = 0;
         
-
         this.handleInput();
         this.handleAnimation();
-    };
-
-    Player.getInstance = function () {
-        return playerInstance;
     };
 
     Player.prototype.setProperties = function () {
@@ -81,7 +85,7 @@ define([
         } else if (this.state.movingLeft) {
             bulletDx = -600;
         } else {
-            if (bulletDy != 0) {
+            if (bulletDy !== 0) {
                 bulletDx = 0;
             } else {
                 if (this.state.facingRight) {
@@ -157,7 +161,7 @@ define([
     Player.prototype.handleDucking = function () {
         if (cursors.down.isDown) {
             if (this.state.onGround) {
-                if (this.state.isDucking == false) {
+                if (this.state.isDucking === false) {
                     this.state.isDucking = true;
                     this.body.height = this.height * 0.55;
                 }                
@@ -177,17 +181,19 @@ define([
     };
 
     Player.prototype.handleUpAction = function () {
-        if (this.overlappingFriend && this.overlappingFriend.body && this.overlappingFriend.body.hitTest(this.body.center.x, this.body.center.y)) {
+        if (this.overlappingFriend && this.overlappingFriend.body && 
+                this.game.physics.arcade.intersects(this.overlappingFriend.body, this.body)) {
             this.overlappingFriend.createDialog();
             this.overlappingFriend = undefined;
         }
 
-        if (this.overlappingDoor && this.overlappingDoor.body && this.overlappingDoor.body.hitTest(this.body.center.x, this.body.center.y)) {
+        if (this.overlappingDoor && this.overlappingDoor.body && 
+                this.game.physics.arcade.intersects(this.overlappingDoor.body, this.body)) {
             // todo maintain health
             this.reset();
             this.game.state.getCurrentState().exitLevel(this, this.overlappingDoor);
         }
-    }
+    };
 
     Player.prototype.handleMoving = function () {
         if (cursors.left.isDown && !this.state.isDucking) {

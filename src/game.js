@@ -7,7 +7,8 @@ define([
     	console.log('Loading game module');
     }
 
-    var map, backgroundTileSprite, backgroundLayer, collisionLayer, exitLayer, doorLayer, player, bulletPool, enemiesLayer, friendsLayer;
+    var map, backgroundTileSprite, backgroundLayer, collisionLayer, exitLayer, doorLayer, player,
+        bulletPool, enemiesLayer, friendsLayer, mapData;
     
     Game.prototype = {
         constructor: Game,
@@ -74,6 +75,7 @@ define([
         },
 
         createMap: function (mapName, linkTo) {
+            this.game.camera.fade();
         	if (mapName === undefined) {
         		mapName = 'test1';
         	}
@@ -88,7 +90,7 @@ define([
                 friendsLayer.destroy();
                 backgroundTileSprite.destroy();
         	}
-            var mapData = this.game.cache.getTilemapData(mapName).data;
+            mapData = this.game.cache.getTilemapData(mapName).data;
         	map = this.add.tilemap(mapName);
 
             for (var i = 0; i < mapData.tilesets.length; i++) {
@@ -103,16 +105,9 @@ define([
                     if (i === 0) {
                         layer.resizeWorld();
                     }
+
                     if (mapData.layers[i].name == "collision") {
-                        collisionLayer = layer;
-                        var layerData = layer.layer.data;
-                        for (var j = 0; j < layerData.length; j++) {
-                            for (var k = 0; k < layerData[j].length; k++) {
-                                if (layerData[j][k].index > -1) {
-                                    map.setCollision(layerData[j][k].index, true, collisionLayer);
-                                }
-                            }
-                        }
+                        this.processCollisionLayer(layer);
                     }
                 }
                 
@@ -137,11 +132,26 @@ define([
         	collisionLayer.visible = false;
 
         	this.processMapCollisionProperties();
-            exitLayer.forEach(this.processExits, this, false, linkTo);
-            doorLayer.forEach(this.processDoors, this, false, linkTo);
+
+            this.processExitsAndEntrances(linkTo);
 
         	this.createEntities();
-            
+
+            this.game.world.bringToTop(bulletPool);
+            this.game.world.bringToTop(player);
+            this.game.camera.flash(0x000000, 500, true);
+        },
+
+        processCollisionLayer: function (layer) {
+            collisionLayer = layer;
+            var layerData = layer.layer.data;
+            for (var j = 0; j < layerData.length; j++) {
+                for (var k = 0; k < layerData[j].length; k++) {
+                    if (layerData[j][k].index > -1) {
+                        map.setCollision(layerData[j][k].index, true, collisionLayer);
+                    }
+                }
+            }
         },
 
         createEntities: function () {
@@ -175,6 +185,7 @@ define([
         },
 
         processMapCollisionProperties: function () {
+            // check for custom properties on tiles such as passthru
         	var d = collisionLayer.map.layers[collisionLayer.index].data;
         	var t;
         	for (var i = 0; i < d.length; i++) {
@@ -185,6 +196,11 @@ define([
         			}
         		}
         	}
+        },
+
+        processExitsAndEntrances: function(linkTo) {
+            exitLayer.forEach(this.processExits, this, false, linkTo);
+            doorLayer.forEach(this.processDoors, this, false, linkTo);
         },
 
         processExits: function (exit, linkTo) {
@@ -208,18 +224,17 @@ define([
         linkPlayerToExit: function (exit, linkTo) {
             if (exit.exitId === linkTo) {
                 player.position.setTo(exit.position.x, exit.position.y + exit.height);
+                this.game.camera.setPosition(player.x, player.y);
                 if (exit.name == "door") {
                     player.overlappingDoor = exit;
                     player.position.x += exit.width / 2;
-                }                
+                }              
             }
         },
 
         exitLevel: function (collider, tile) {
         	if (tile.exitTo !== undefined) {
         		this.createMap(tile.exitTo, tile.linkTo);
-                this.game.world.bringToTop(bulletPool);
-                this.game.world.bringToTop(player);
         	}
         },
 

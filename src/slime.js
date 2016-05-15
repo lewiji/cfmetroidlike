@@ -36,10 +36,11 @@ define([
     };
 
     Slime.prototype.update = function () {
-        if (this.attacking === false && player.x >= this.x && player.x <= this.x + this.width) {
+        if (this.attacking === false && this.inCamera && player.x >= this.x && 
+                player.x <= this.x + this.width && player.y > this.y) {
             this.attacking = true;
             this.animations.play('attack');
-            this.body.acceleration.y = 400;
+            this.body.acceleration.y = 1000;
         }
     };
 
