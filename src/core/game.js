@@ -1,6 +1,6 @@
 define([
-    'phaser', 'player', 'pool', 'bullet', 'ripper', 'crawler', 'slime', 'friend'
-], function (Phaser, Player, Pool, Bullet, Ripper, Crawler, Slime, Friend) { 
+    'phaser', 'player', 'pool', 'bullet', 'ripper', 'crawler', 'slime', 'friend', 'hud'
+], function (Phaser, Player, Pool, Bullet, Ripper, Crawler, Slime, Friend, HUD) { 
     'use strict';
 
     function Game() {
@@ -8,7 +8,7 @@ define([
     }
 
     var map, backgroundTileSprite, backgroundLayer, collisionLayer, exitLayer, doorLayer, player,
-        bulletPool, enemiesLayer, friendsLayer, mapData;
+        bulletPool, enemiesLayer, friendsLayer, mapData, HUD;
     
     Game.prototype = {
         constructor: Game,
@@ -24,6 +24,7 @@ define([
         	player = new Player(this.game, bulletPool);
 
             this.createMap();
+            this.createHUD();
 
         	this.game.physics.arcade.gravity.y = 400;
         },
@@ -139,7 +140,12 @@ define([
 
             this.game.world.bringToTop(bulletPool);
             this.game.world.bringToTop(player);
+            this.game.world.bringToTop(HUD);
             this.game.camera.flash(0x000000, 500, true);
+        },
+
+        createHUD: function () {
+            HUD = new HUD(this.game);
         },
 
         processCollisionLayer: function (layer) {

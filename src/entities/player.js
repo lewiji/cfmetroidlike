@@ -19,6 +19,8 @@ define([
 
         this.spawn(100, 100, {texture: 'player'});
 
+        this.health = 16;
+
         // set anchor to middle, bottom
         this.anchor.setTo(0.5, 1);
 
@@ -189,8 +191,7 @@ define([
 
         if (this.overlappingDoor && this.overlappingDoor.body && 
                 this.game.physics.arcade.intersects(this.overlappingDoor.body, this.body)) {
-            // todo maintain health
-            this.reset();
+            this.reset(undefined, undefined, this.health);
             this.game.state.getCurrentState().exitLevel(this, this.overlappingDoor);
         }
     };
@@ -278,6 +279,11 @@ define([
             return;
         }
         this.health -= enemy.damage;
+
+        if (this.health <= 0) {
+            this.game.camera.fade();
+            this.kill();
+        }
         
         this.makeInvulnerable();
         

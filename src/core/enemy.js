@@ -11,7 +11,7 @@ define([
         this.body.immovable = true;
 
         this.maxHealth = 1;
-        this.damage = 8;
+        this.damage = 4;
 
     	this.anchor.setTo(0.5, 0.5);
     }
@@ -44,6 +44,8 @@ define([
             this.body.allowGravity = false;
             this.body.enable = false;
             this.death();
+        } else {
+            this.game.add.tween(this).to({alpha: 0.5}, 100, 'Linear', true, 0, 0, true);
         }
     };
 

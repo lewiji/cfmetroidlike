@@ -7,15 +7,20 @@ define([
 
     function Slime (game, x, y, texture, key) {
     	Enemy.call(this, game, x, y, texture, key);
+        this.maxHealth = 2;
+        this.attacking = false;
+        this.body.allowGravity = false;
+        this.body.bounce.y = 0.2;
+
         this.spawn(x, y, {
             texture: texture,
             frameName: key
         });
+
         this.anchor.setTo(0, 0);
         if (player === undefined) {
             player = Player.getInstance();
-        }
-        this.attacking = false;
+        }        
     }
 
     Slime.prototype = Object.create(Enemy.prototype);
@@ -32,7 +37,6 @@ define([
         ];
         data.defaultAnimation = 'idle';
         Enemy.prototype.spawn.call(this, x, y, data);
-        this.body.allowGravity = false;
     };
 
     Slime.prototype.update = function () {
@@ -40,7 +44,7 @@ define([
                 player.x <= this.x + this.width && player.y > this.y) {
             this.attacking = true;
             this.animations.play('attack');
-            this.body.acceleration.y = 1000;
+            this.body.acceleration.y = 1500;
         }
     };
 
