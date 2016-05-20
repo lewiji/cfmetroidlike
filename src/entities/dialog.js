@@ -23,9 +23,16 @@ define([
 
         this.dialogManager = manager;
 
-        this.variables = {};
+        this.character = character;
 
-        this.initiateDialog(character, dialogTree);
+        if (this.character.dialogVariables === undefined) {
+            this.character.dialogVariables = {};
+            this.variables = {};
+        } else {
+            this.variables = this.character.dialogVariables;
+        }
+
+        this.initiateDialog();
 
         return this;
     }
@@ -34,7 +41,7 @@ define([
     Dialog.prototype.constructor = Dialog;
 
     Dialog.prototype.initiateDialog = function (character, dialogTree) {
-        if (!dialogTree) {
+        if (!this.dialogTree) {
             return;
         }
 
@@ -45,22 +52,56 @@ define([
         this.cursors.up.onDown.add(this.handleUp, this);
         this.cursors.down.onDown.add(this.handleDown, this);
 
-        this.createDialogUI(character, dialogTree[0].name);
+        this.createDialogUI();
 
-        if (dialogTree[0].choices) {
-            this.createChoices(dialogTree[0].choices);
-        }
+        this.traverseToRootAndProcess();
 
         this.game.physics.arcade.isPaused = true;        
     };
 
-    Dialog.prototype.createDialogUI = function (character, text) {
+    Dialog.prototype.traverseToRootAndProcess = function () {
+        var nodeIndex = 0;
+        var checking = true;
+
+        while (checking === true) {
+            checking = false;
+            for (var i = 0; i < this.dialogTree.length; i++) {
+                if (this.dialogTree[i].choices) {
+                    for (var j = 0; j < this.dialogTree[i].choices.length; j++) {
+                        if (this.dialogTree[i].choices[j] == this.dialogTree[nodeIndex]) {
+                            checking = true;
+                            nodeIndex = i;
+                        }
+                    }
+                } else if (this.dialogTree[i].branches) {
+                    for (var branch in this.dialogTree[i].branches) {
+                        if( this.dialogTree[i].branches.hasOwnProperty( branch ) ) {
+                            if (this.dialogTree[i].branches[branch] == this.dialogTree[nodeIndex].id) {
+                                checking = true;
+                                nodeIndex = i;
+                            }
+                        }
+                    }
+                } else if (this.dialogTree[i].next && this.dialogTree[i].next == this.dialogTree[nodeIndex].id) {
+                    checking = true;
+                    nodeIndex = i;
+                }
+            }
+        }
+
+        console.log(nodeIndex);
+
+        this.processChoiceNode(this.dialogTree[nodeIndex].id);
+
+    };
+
+    Dialog.prototype.createDialogUI = function () {
         this.dialogBox = this.game.add.sprite(this.game.camera.x + (this.game.width / 2), this.game.camera.y + (this.game.height / 2), 'ui', 'panel_brown.png');
         this.dialogBox.width *= 2; 
         this.dialogBox.anchor.setTo(0.5, 0.5);
         this.dialogBox.y -= this.height;
 
-        this.dialogText = this.game.add.text(-this.dialogBox.width / 2, -this.dialogBox.height / 2, text, 
+        this.dialogText = this.game.add.text(-this.dialogBox.width / 2, -this.dialogBox.height / 2, 'Text', 
             {
                 fontSize: 20,
                 boundsAlignH: 'center',
@@ -131,10 +172,6 @@ define([
         this.add(this.choicesBox);
     };
 
-    Dialog.prototype.updateDialogText = function () {
-
-    };
-
     Dialog.prototype.handleAction = function () {
         if (this.choices.length === 0) {
             if (this.nextId != undefined) {
@@ -167,6 +204,9 @@ define([
             if (this.dialogTree[i].id === id) {
                 if (this.dialogTree[i].type == "Set") {
                     this.variables[this.dialogTree[i].variable] = this.dialogTree[i].value;
+
+                    this.character.dialogVariables[this.dialogTree[i].variable] = this.dialogTree[i].value;
+
                     this.processChoiceNode(this.dialogTree[i].next);
                     return;
                 } else if (this.dialogTree[i].type == "Text") {
@@ -175,9 +215,13 @@ define([
                         this.createChoices(this.dialogTree[i].choices);
                     } else {
                         this.choices = [];
-                        this.remove(this.choicesBox);
-                        this.choicesBox.destroy();
-                        this.cursor.destroy();
+                        
+                        if (this.choicesBox !== undefined) {
+                            this.remove(this.choicesBox);
+                            this.choicesBox.destroy();
+                            this.cursor.destroy();
+                        }
+
                         this.nextId = this.dialogTree[i].next;
                     }
                     return;
