@@ -1,6 +1,6 @@
 define([
-    'phaser'
-], function (Phaser) { 
+    'phaser', 'dialog-manager'
+], function (Phaser, DialogManager) { 
     'use strict';
 
     function Entity (game, x, y, texture, key) {
@@ -8,6 +8,11 @@ define([
         this.game = game;
         this.game.add.existing(this);
         this.game.physics.enable(this);
+
+        if (this.dialogManager === undefined) {
+            this.dialogManager = DialogManager.getInstance(game);
+        }
+
         return this;
     }
 

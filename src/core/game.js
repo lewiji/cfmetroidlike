@@ -1,6 +1,6 @@
 define([
-    'phaser', 'player', 'pool', 'bullet', 'ripper', 'crawler', 'slime', 'friend', 'hud'
-], function (Phaser, Player, Pool, Bullet, Ripper, Crawler, Slime, Friend, HUD) { 
+    'phaser', 'player', 'pool', 'bullet', 'ripper', 'crawler', 'slime', 'friend', 'hud', 'dialog-manager'
+], function (Phaser, Player, Pool, Bullet, Ripper, Crawler, Slime, Friend, HUD, DialogManager) { 
     'use strict';
 
     function Game() {
@@ -8,7 +8,7 @@ define([
     }
 
     var map, backgroundTileSprite, backgroundLayer, collisionLayer, collisionObjectLayer, exitLayer, doorLayer, player,
-        bulletPool, enemiesLayer, friendsLayer, mapData, HUD;
+        bulletPool, enemiesLayer, friendsLayer, mapData, HUD, dialogManager;
     
     Game.prototype = {
         constructor: Game,
@@ -25,6 +25,7 @@ define([
 
             this.createMap();
             this.createHUD();
+            dialogManager = new DialogManager(this.game);
 
         	this.game.physics.arcade.gravity.y = 400;
         },
@@ -81,6 +82,10 @@ define([
         	if (mapName === undefined) {
         		mapName = 'test1';
         	}
+
+            if (this.game.physics.arcade.isPaused) {
+                this.game.physics.arcade.isPaused = false;
+            }
         	if (map !== undefined) {
         		map.destroy();
                 for (var i = 0; i < this.layers.length; i++) {

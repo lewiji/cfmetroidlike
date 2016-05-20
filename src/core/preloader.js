@@ -37,6 +37,8 @@ define([
             this.load.atlasJSONArray('friends', 'assets/spritesheets/friends.png', 'assets/spritesheets/friends.json');
             this.load.atlasJSONArray('backgrounds', 'assets/spritesheets/backgrounds.png', 'assets/spritesheets/backgrounds.json');
             this.load.atlasJSONArray('ui', 'assets/spritesheets/ui.png', 'assets/spritesheets/ui.json');
+
+            this.load.json('dialog_villager1', 'assets/dialog/dialogue.dlz');
         },
 
         create: function () {

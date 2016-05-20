@@ -4,7 +4,6 @@ define([
     'use strict';
 
     var friendTextures = ['alienBeige.png', 'alienBlue.png', 'alienPink.png'];
-    var phrases = ['Hi friend!', 'Willkommen!', 'Whaddup', 'Really long greeting!'];
 
     function Friend (game, x, y, texture, key) {
     	Entity.call(this, game, x, y, texture, key);
@@ -88,37 +87,8 @@ define([
         this.game.time.events.add(3000, Friend.prototype.resetPatrol, this);
     };
 
-    Friend.prototype.createDialog = function () {
-        // TODO create proper dialog module, use pooling for dialog
-        if (this.dialogBox !== undefined) {
-            return;
-        }
-        this.dialogBox = this.game.add.sprite(0, 0, 'ui', 'panel_brown.png');
-        this.dialogBox.width *= 2; 
-        this.dialogBox.anchor.setTo(0.5, 1);
-        this.dialogBox.y -= this.height;
-
-        this.dialogText = this.game.add.text(-this.dialogBox.width / 2, -this.dialogBox.height, Phaser.ArrayUtils.getRandomItem(phrases), 
-            {
-                fontSize: 20,
-                boundsAlignH: 'center',
-                boundsAlignV: 'middle',
-                wordWrap: true,
-                wordWrapWidth: this.dialogBox.width
-            }
-        );
-        this.dialogText.setTextBounds(this.dialogBox.width / 2, 0, this.dialogBox.width, this.dialogBox.height);
-        this.dialogBox.addChild(this.dialogText);
-        this.dialogText.width /= 2;
-
-        this.addChild(this.dialogBox);
-
-        this.game.time.events.add(3000, Friend.prototype.destroyDialog, this);
-    };
-
-    Friend.prototype.destroyDialog = function () {
-        this.dialogBox.destroy();
-        this.dialogBox = undefined;
+    Friend.prototype.initiateDialog = function () {
+        this.dialogManager.initiateDialog(this);
     };
 
     Friend.prototype.death = function () {

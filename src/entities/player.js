@@ -64,6 +64,10 @@ define([
     Player.prototype.update = function () {
         // default x velocity to 0 = instant stop
         this.body.velocity.x = 0;
+
+        if (this.game.physics.arcade.isPaused) {
+            return;
+        }
         
         this.handleInput();
         this.handleAnimation();
@@ -185,7 +189,7 @@ define([
     Player.prototype.handleUpAction = function () {
         if (this.overlappingFriend && this.overlappingFriend.body && 
                 this.game.physics.arcade.intersects(this.overlappingFriend.body, this.body)) {
-            this.overlappingFriend.createDialog();
+            this.overlappingFriend.initiateDialog();
             this.overlappingFriend = undefined;
         }
 

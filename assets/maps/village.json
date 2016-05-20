@@ -39,7 +39,7 @@
          "name":"objects",
          "objects":[
                 {
-                 "height":218.181818181818,
+                 "height":218.182,
                  "id":1,
                  "name":"exit",
                  "properties":
@@ -51,9 +51,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":21.0909393939394,
-                 "x":-39.3939393939394,
-                 "y":1078.78787878788
+                 "width":21.0909,
+                 "x":-39.3939,
+                 "y":1078.79
                 }, 
                 {
                  "height":0,
@@ -61,7 +61,7 @@
                  "name":"villager",
                  "properties":
                     {
-
+                     "id":"villager1"
                     },
                  "rotation":0,
                  "type":"",

@@ -15,6 +15,7 @@ define([
                 preload: this.preload, 
                 create: this.create 
             });
+            window.game = this.game;
         },
 
         preload: function() {
