@@ -200,8 +200,7 @@ define([
         if (this.character.id !== undefined) {
             this.dialogManager.characterMemory[this.character.id] = this.character.dialogVariables;
         }
-        console.log(this.dialogManager.characterMemory);
-        
+
         this.dialogManager.activeDialog = undefined;
     };
 

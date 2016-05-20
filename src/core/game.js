@@ -80,7 +80,7 @@ define([
         createMap: function (mapName, linkTo) {
             this.game.camera.fade();
         	if (mapName === undefined) {
-        		mapName = 'village';
+        		mapName = 'test1';
         	}
 
             if (this.game.physics.arcade.isPaused) {
