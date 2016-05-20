@@ -38,7 +38,6 @@ define([
             return undefined;
         }
         var dialogArray = this.game.cache.getJSON('dialog_' + characterName);
-        console.log(dialogArray);
         return dialogArray;
     };
 

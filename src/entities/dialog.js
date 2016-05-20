@@ -63,6 +63,8 @@ define([
         var nodeIndex = 0;
         var checking = true;
 
+        // starting from node 0, check references to it from other nodes and keep going backwards
+        // until we find the root node
         while (checking === true) {
             checking = false;
             for (var i = 0; i < this.dialogTree.length; i++) {
@@ -89,10 +91,7 @@ define([
             }
         }
 
-        console.log(nodeIndex);
-
         this.processChoiceNode(this.dialogTree[nodeIndex].id);
-
     };
 
     Dialog.prototype.createDialogUI = function () {
@@ -101,7 +100,7 @@ define([
         this.dialogBox.anchor.setTo(0.5, 0.5);
         this.dialogBox.y -= this.height;
 
-        this.dialogText = this.game.add.text(-this.dialogBox.width / 2, -this.dialogBox.height / 2, 'Text', 
+        this.dialogText = this.game.add.text(-this.dialogBox.width / 2, -this.dialogBox.height / 2, ' ', 
             {
                 fontSize: 20,
                 boundsAlignH: 'center',
@@ -140,6 +139,7 @@ define([
     };
 
     Dialog.prototype.createChoicesUI = function (choices) {
+        // TODO reuse instead of destroy and recreate
         if (this.choicesBox) {
             this.remove(this.choicesBox);
             this.choicesBox.destroy();
@@ -203,6 +203,7 @@ define([
         for (var i = 0; i < this.dialogTree.length; i++) {
             if (this.dialogTree[i].id === id) {
                 if (this.dialogTree[i].type == "Set") {
+                // Set variables in memory and on character
                     this.variables[this.dialogTree[i].variable] = this.dialogTree[i].value;
 
                     this.character.dialogVariables[this.dialogTree[i].variable] = this.dialogTree[i].value;
@@ -210,12 +211,13 @@ define([
                     this.processChoiceNode(this.dialogTree[i].next);
                     return;
                 } else if (this.dialogTree[i].type == "Text") {
+                // Update text and present choices if available
                     this.dialogText.setText(this.dialogTree[i].name);
                     if (this.dialogTree[i].choices) {
                         this.createChoices(this.dialogTree[i].choices);
                     } else {
                         this.choices = [];
-                        
+
                         if (this.choicesBox !== undefined) {
                             this.remove(this.choicesBox);
                             this.choicesBox.destroy();
@@ -226,6 +228,7 @@ define([
                     }
                     return;
                 } else if (this.dialogTree[i].type == "Branch") {
+                // Process branching
                     if (this.variables[this.dialogTree[i].variable] === undefined) {
                         this.processChoiceNode(this.dialogTree[i].branches['_default']);
                     } else {
@@ -233,6 +236,7 @@ define([
                     }
                     return;
                 } else if (this.dialogTree[i].type == "Node") {
+                // If it's a node, I dunno, move on if possible
                     this.processChoiceNode(this.dialogTree[i].next);
                     return;
                 }
@@ -243,6 +247,9 @@ define([
     };
 
     Dialog.prototype.handleUp = function () {
+        if (this.choices === undefined || this.choices.length === 0) {
+            return;
+        }
         this.choiceIndex--;
         if (this.choiceIndex < 0) {
             this.choiceIndex = this.choices.length - 1;
@@ -251,6 +258,9 @@ define([
     };
 
     Dialog.prototype.handleDown = function () {
+        if (this.choices === undefined || this.choices.length === 0) {
+            return;
+        }
         this.choiceIndex++;
         if (this.choiceIndex > this.choices.length - 1) {
             this.choiceIndex = 0;
