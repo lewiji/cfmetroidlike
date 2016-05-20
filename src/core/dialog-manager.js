@@ -43,11 +43,7 @@ define([
 
     DialogManager.prototype.initiateDialog = function (character) {
         var dialogTree = this.getDialog(character.id);
-        if (dialogTree === undefined) {
-            return;
-        } else {
-            this.activeDialog = new Dialog(this.game, character, dialogTree, this);
-        }
+        this.activeDialog = new Dialog(this.game, character, dialogTree, this);
     };
 
     DialogManager.prototype.resetDialog = function () {

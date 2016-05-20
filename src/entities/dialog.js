@@ -3,7 +3,11 @@ define([
 ], function (Phaser, Player) { 
     'use strict';
 
-    var stockPhrases = ['Hi friend!', 'Willkommen!', 'Whaddup', 'Greetings!'];
+    var stockPhrases = [
+        [{"type":"Text","id":"8497082b-f512-4dac-806d-d26fd4044f73","name":"Hi!","next":null}],
+        [{"type":"Text","id":"8497082b-f512-4dac-806d-d26fd4044f73","name":"Hello!","next":null}],
+        [{"type":"Text","id":"8497082b-f512-4dac-806d-d26fd4044f73","name":"Welcome!","next":null}]
+    ];
 
     /**
      * Extend Phaser.Group into a Dialog
@@ -42,7 +46,7 @@ define([
 
     Dialog.prototype.initiateDialog = function (character, dialogTree) {
         if (!this.dialogTree) {
-            return;
+            this.dialogTree = Phaser.ArrayUtils.getRandomItem(stockPhrases);
         }
 
         this.cursors = this.game.input.keyboard.createCursorKeys();
