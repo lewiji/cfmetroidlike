@@ -34,6 +34,9 @@ define([
     };
 
     DialogManager.prototype.getDialog = function (characterName) {
+        if (!this.game.cache.checkJSONKey('dialog_' + characterName)) {
+            return undefined;
+        }
         var dialogArray = this.game.cache.getJSON('dialog_' + characterName);
         console.log(dialogArray);
         return dialogArray;

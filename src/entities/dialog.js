@@ -139,6 +139,7 @@ define([
     Dialog.prototype.handleAction = function () {
         if (this.choices.length === 0) {
             this.game.physics.arcade.isPaused = false; 
+            this.actionKey.reset();
             this.actionKey.onDown.remove(Dialog.prototype.handleAction, this);
             this.cursors.up.onDown.remove(Dialog.prototype.handleUp, this);
             this.cursors.down.onDown.remove(Dialog.prototype.handleDown, this);
