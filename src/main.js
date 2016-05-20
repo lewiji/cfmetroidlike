@@ -20,7 +20,7 @@
             player: 'entities/player',
             bullet: 'objects/bullet',
             'dialog-manager': 'core/dialog-manager',
-            dialog: 'entities/dialog'
+            dialog: 'objects/dialog'
         },
 
         shim: {
