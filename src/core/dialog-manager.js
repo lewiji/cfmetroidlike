@@ -53,6 +53,7 @@ define([
 
     DialogManager.prototype.resetDialog = function () {
         if (this.activeDialog !== undefined) {
+            this.activeDialog.reset();
             this.activeDialog = undefined;
         }
     };

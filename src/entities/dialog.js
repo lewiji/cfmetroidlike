@@ -92,7 +92,6 @@ define([
         }
 
         if (this.choices.length > 0) {
-            console.log(this.choices);
             this.createChoicesUI(this.choices);
         }
 
@@ -138,28 +137,38 @@ define([
 
     Dialog.prototype.handleAction = function () {
         if (this.choices.length === 0) {
-            this.game.physics.arcade.isPaused = false; 
-            this.actionKey.reset();
-            this.actionKey.onDown.remove(Dialog.prototype.handleAction, this);
-            this.cursors.up.onDown.remove(Dialog.prototype.handleUp, this);
-            this.cursors.down.onDown.remove(Dialog.prototype.handleDown, this);
-            this.destroy();
-            this.dialogManager.resetDialog();
+            if (this.nextId != undefined) {
+                this.processChoiceNode(this.nextId);
+            } else {
+                this.reset();
+            }
+            
         } else {
             this.processChoiceNode();
         }
+    };
+
+    Dialog.prototype.reset = function () {
+        this.game.physics.arcade.isPaused = false; 
+        this.actionKey.reset();
+        this.actionKey.onDown.remove(Dialog.prototype.handleAction, this);
+        this.cursors.up.onDown.remove(Dialog.prototype.handleUp, this);
+        this.cursors.down.onDown.remove(Dialog.prototype.handleDown, this);
+        this.destroy();
+        this.dialogManager.activeDialog = undefined;
     };
 
     Dialog.prototype.processChoiceNode = function (id) {
         if (id === undefined) {
             id = this.choices[this.choiceIndex].next;
         }
+        this.nextId = undefined;
         for (var i = 0; i < this.dialogTree.length; i++) {
             if (this.dialogTree[i].id === id) {
                 if (this.dialogTree[i].type == "Set") {
                     this.variables[this.dialogTree[i].variable] = this.dialogTree[i].value;
                     this.processChoiceNode(this.dialogTree[i].next);
-                    break;
+                    return;
                 } else if (this.dialogTree[i].type == "Text") {
                     this.dialogText.setText(this.dialogTree[i].name);
                     if (this.dialogTree[i].choices) {
@@ -169,18 +178,24 @@ define([
                         this.remove(this.choicesBox);
                         this.choicesBox.destroy();
                         this.cursor.destroy();
+                        this.nextId = this.dialogTree[i].next;
                     }
-                    break;
+                    return;
                 } else if (this.dialogTree[i].type == "Branch") {
                     if (this.variables[this.dialogTree[i].variable] === undefined) {
                         this.processChoiceNode(this.dialogTree[i].branches['_default']);
                     } else {
                         this.processChoiceNode(this.dialogTree[i].branches[this.variables[this.dialogTree[i].variable]]);
                     }
-                    break;
+                    return;
+                } else if (this.dialogTree[i].type == "Node") {
+                    this.processChoiceNode(this.dialogTree[i].next);
+                    return;
                 }
             }
         }
+        // no match, end dialog
+        this.reset();
     };
 
     Dialog.prototype.handleUp = function () {

@@ -97,6 +97,7 @@ define([
         		enemiesLayer.destroy();
                 friendsLayer.destroy();
                 backgroundTileSprite.destroy();
+                dialogManager.resetDialog();
         	}
             mapData = this.game.cache.getTilemapData(mapName).data;
         	map = this.add.tilemap(mapName);
