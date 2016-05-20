@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="70" tileheight="70" nextobjectid="8">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="70" tileheight="70" nextobjectid="12">
  <properties>
   <property name="background" value="bg.png"/>
  </properties>
  <tileset firstgid="1" name="sheet" tilewidth="70" tileheight="70" tilecount="98" columns="14">
   <image source="D:/AssetLibrary/kenney1/Art/Platformer assets (1330 assets)/Building pack (100 assets)/Spritesheet/sheet.png" width="980" height="490"/>
+  <tile id="9">
+   <properties>
+    <property name="passthru" value="true"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="99" name="tiles_general" tilewidth="70" tileheight="70" tilecount="209" columns="19">
   <image source="../spritesheets/tiles_general.png" width="1330" height="770"/>

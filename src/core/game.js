@@ -7,7 +7,7 @@ define([
     	console.log('Loading game module');
     }
 
-    var map, backgroundTileSprite, backgroundLayer, collisionLayer, exitLayer, doorLayer, player,
+    var map, backgroundTileSprite, backgroundLayer, collisionLayer, collisionObjectLayer, exitLayer, doorLayer, player,
         bulletPool, enemiesLayer, friendsLayer, mapData, HUD;
     
     Game.prototype = {
@@ -30,7 +30,8 @@ define([
         },
 
         update: function () {
-        	this.game.physics.arcade.collide(player, collisionLayer);
+            this.game.physics.arcade.collide(player, collisionLayer);
+            this.game.physics.arcade.collide(player, collisionObjectLayer);
 
         	this.game.physics.arcade.collide(player, exitLayer, this.exitLevel, null, this);
             this.game.physics.arcade.overlap(player, doorLayer, player.overlapsDoor, null, player);
@@ -87,6 +88,7 @@ define([
                 }
         		exitLayer.destroy();
                 doorLayer.destroy();
+                collisionObjectLayer.destroy();
         		enemiesLayer.destroy();
                 friendsLayer.destroy();
                 backgroundTileSprite.destroy();
@@ -111,7 +113,6 @@ define([
                         this.processCollisionLayer(layer);
                     }
                 }
-                
             }
 
             if (map.properties.background !== undefined) {
@@ -129,6 +130,13 @@ define([
             map.createFromObjects('objects', 'door', 'debug', 1, true, false, doorLayer, undefined, false);
             doorLayer.setAll('body.moves', false);
             doorLayer.alpha = 0;
+
+            collisionObjectLayer = this.game.add.group();
+            collisionObjectLayer.enableBody = true;
+            map.createFromObjects('objects', 'collision', 'debug', 1, true, false, collisionObjectLayer, undefined, false);
+            collisionObjectLayer.setAll('body.moves', false);
+            collisionObjectLayer.setAll('body.mass', 4);
+            //doorLayer.alpha = 0;
 
         	collisionLayer.visible = false;
 
@@ -197,7 +205,7 @@ define([
         	for (var i = 0; i < d.length; i++) {
         		for (var j = 0; j < d[i].length; j++) {
         			t = d[i][j];
-        			if (t.properties.passthru == 1) {
+        			if (t.properties.passthru == 'true') {
         				t.setCollision(false, false, true, false);
         			}
         		}

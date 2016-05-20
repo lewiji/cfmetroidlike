@@ -125,7 +125,7 @@
                  "visible":true,
                  "width":0,
                  "x":429,
-                 "y":313
+                 "y":320
                 }],
          "offsetx":32,
          "offsety":0,
@@ -176,7 +176,7 @@
                 },
              "770":
                 {
-                 "passthru":"1"
+                 "passthru":"true"
                 }
             },
          "tilewidth":32

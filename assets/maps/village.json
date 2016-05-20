@@ -124,7 +124,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":8,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "properties":
     {
@@ -148,6 +148,13 @@
          "spacing":0,
          "tilecount":98,
          "tileheight":70,
+         "tileproperties":
+            {
+             "9":
+                {
+                 "passthru":"true"
+                }
+            },
          "tilewidth":70
         }, 
         {

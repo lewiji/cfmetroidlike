@@ -22,7 +22,7 @@
   </tile>
   <tile id="770">
    <properties>
-    <property name="passthru" value="1"/>
+    <property name="passthru" value="true"/>
    </properties>
   </tile>
  </tileset>
@@ -861,6 +861,6 @@
     <property name="linkTo" value="1"/>
    </properties>
   </object>
-  <object id="22" name="slime" x="429" y="313"/>
+  <object id="22" name="slime" x="429" y="320"/>
  </objectgroup>
 </map>
