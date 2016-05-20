@@ -9,7 +9,7 @@ define([
      * Extend Phaser.Group into a Dialog
      * @param {Phaser.Game} game       phaser game instance
      */
-    function Dialog (game, character, dialogTree) {
+    function Dialog (game, character, dialogTree, manager) {
         // singleton
 
         Phaser.Group.call(this, game);
@@ -20,6 +20,8 @@ define([
        // player = Player.getInstance();
 
         this.dialogTree = dialogTree;
+
+        this.dialogManager = manager;
 
         this.variables = {};
 
@@ -35,7 +37,7 @@ define([
         if (!dialogTree) {
             return;
         }
-        
+
         this.cursors = this.game.input.keyboard.createCursorKeys();
         this.actionKey = this.game.input.keyboard.addKey(Phaser.Keyboard.Z);
         this.actionKey.onDown.add(this.handleAction, this);
@@ -141,6 +143,7 @@ define([
             this.cursors.up.onDown.remove(Dialog.prototype.handleUp, this);
             this.cursors.down.onDown.remove(Dialog.prototype.handleDown, this);
             this.destroy();
+            this.dialogManager.resetDialog();
         } else {
             this.processChoiceNode();
         }
