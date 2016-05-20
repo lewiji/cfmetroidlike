@@ -196,6 +196,12 @@ define([
         this.cursors.up.onDown.remove(Dialog.prototype.handleUp, this);
         this.cursors.down.onDown.remove(Dialog.prototype.handleDown, this);
         this.destroy();
+
+        if (this.character.id !== undefined) {
+            this.dialogManager.characterMemory[this.character.id] = this.character.dialogVariables;
+        }
+        console.log(this.dialogManager.characterMemory);
+        
         this.dialogManager.activeDialog = undefined;
     };
 

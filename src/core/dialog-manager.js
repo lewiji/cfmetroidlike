@@ -17,6 +17,7 @@ define([
 
         this.game = game;
         this.activeDialog;
+        this.characterMemory = {};
 
         managerInstance = this;
 
@@ -43,6 +44,9 @@ define([
 
     DialogManager.prototype.initiateDialog = function (character) {
         var dialogTree = this.getDialog(character.id);
+        if (this.characterMemory[character.id] !== undefined) {
+            character.dialogVariables = this.characterMemory[character.id];
+        }
         this.activeDialog = new Dialog(this.game, character, dialogTree, this);
     };
 
